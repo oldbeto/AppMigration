@@ -1,0 +1,2347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CTEGOLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbcte">
+          <Key>
+            <PropertyRef Name="idcte" />
+          </Key>
+          <Property Name="idcte" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clientId" Type="bigint" Nullable="false" />
+          <Property Name="erpCode" Type="bigint" Nullable="false" />
+          <Property Name="serie" Type="smallint" />
+          <Property Name="counterid" Type="bigint" />
+          <Property Name="eKey" Type="varchar" MaxLength="50" />
+          <Property Name="protocolNumber" Type="bigint" />
+          <Property Name="processDate" Type="datetime" />
+          <Property Name="processMessage" Type="varchar" MaxLength="400" />
+          <Property Name="statusProcess" Type="smallint" Nullable="false" />
+          <Property Name="statusCTe" Type="smallint" Nullable="false" />
+          <Property Name="inContingency" Type="smallint" Nullable="false" />
+          <Property Name="isCompress" Type="smallint" Nullable="false" />
+          <Property Name="station" Type="varchar" MaxLength="50" />
+          <Property Name="authorizationDate" Type="datetime" />
+          <Property Name="cancelDate" Type="datetime" />
+          <Property Name="createDate" Type="varchar" MaxLength="10" />
+          <Property Name="CNPJ" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tbctecancel">
+          <Key>
+            <PropertyRef Name="idtbcte" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idtbcte" Type="bigint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CTEGOL.dbo.tbcteCargaEspecial' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbcteCargaEspecial">
+          <Key>
+            <PropertyRef Name="cdCargaEspecial" />
+          </Key>
+          <Property Name="cdCargaEspecial" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tbctedocument">
+          <Key>
+            <PropertyRef Name="idcte" />
+          </Key>
+          <Property Name="idcte" Type="bigint" Nullable="false" />
+          <Property Name="additionalData" Type="varbinary(max)" Nullable="false" />
+          <Property Name="documentData" Type="varbinary(max)" />
+          <Property Name="documentCTe" Type="varbinary(max)" />
+          <Property Name="interfaceSendingDate" Type="datetime" />
+          <Property Name="documentCTeCanc" Type="varbinary(max)" />
+          <Property Name="mastersafSendingDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CTEGOL.dbo.tbcteemail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbcteemail">
+          <Key>
+            <PropertyRef Name="CPFCNPJ" />
+            <PropertyRef Name="EMAIL" />
+            <PropertyRef Name="Id_Email" />
+          </Key>
+          <Property Name="CPFCNPJ" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="createDate" Type="datetime" />
+          <Property Name="updateDate" Type="datetime" />
+          <Property Name="Id_Email" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userUpdate" Type="varchar" MaxLength="50" />
+          <Property Name="userCreate" Type="varchar" MaxLength="50" />
+          <Property Name="status" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="tbCTeEvento">
+          <Key>
+            <PropertyRef Name="idCTeEvento" />
+          </Key>
+          <Property Name="idCTeEvento" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clientId" Type="varchar(max)" />
+          <Property Name="erpCode" Type="bigint" />
+          <Property Name="serie" Type="smallint" />
+          <Property Name="counterId" Type="bigint" />
+          <Property Name="eKey" Type="varchar" MaxLength="150" />
+          <Property Name="protocolNumber" Type="bigint" />
+          <Property Name="processDate" Type="datetime" />
+          <Property Name="processMessage" Type="varchar" MaxLength="250" />
+          <Property Name="statusProcess" Type="smallint" />
+          <Property Name="statusCTe" Type="smallint" />
+          <Property Name="station" Type="varchar" MaxLength="50" />
+          <Property Name="cnpj" Type="varchar" MaxLength="20" />
+          <Property Name="qtdeEvento" Type="bigint" />
+          <Property Name="tipoEvento" Type="varchar" MaxLength="10" />
+          <Property Name="eKeyEvento" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CTEGOL.dbo.tbCTeEventoDocument' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbCTeEventoDocument">
+          <Key>
+            <PropertyRef Name="idCTeEvento" />
+          </Key>
+          <Property Name="idCTeEvento" Type="bigint" Nullable="false" />
+          <Property Name="documentCabec" Type="varbinary(max)" />
+          <Property Name="documentCTeOriginal" Type="varbinary(max)" />
+          <Property Name="documentData" Type="varbinary(max)" />
+          <Property Name="documentEvento" Type="varbinary(max)" />
+          <Property Name="interfaceSendingDate" Type="datetime" />
+          <Property Name="MASTERSAFSENDINGDATE" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CTEGOL.dbo.tbCTeEventoProcess' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbCTeEventoProcess">
+          <Key>
+            <PropertyRef Name="idCTeEvento" />
+          </Key>
+          <Property Name="idCTeEvento" Type="bigint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CTEGOL.dbo.tbCTeEventoRetorno' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbCTeEventoRetorno">
+          <Key>
+            <PropertyRef Name="idCTeEvento" />
+          </Key>
+          <Property Name="idCTeEvento" Type="bigint" Nullable="false" />
+          <Property Name="documentRetCTeEvento" Type="varbinary(max)" />
+          <Property Name="statusCTe" Type="bigint" />
+          <Property Name="XMLRETORNODate" Type="bigint" />
+          <Property Name="XMLRETORNOHHMM" Type="bigint" />
+          <Property Name="processDate" Type="bigint" />
+          <Property Name="processHHMM" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tbcteinut">
+          <Key>
+            <PropertyRef Name="idcte" />
+          </Key>
+          <Property Name="idcte" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cnpjEmissor" Type="bigint" Nullable="false" />
+          <Property Name="clientId" Type="bigint" Nullable="false" />
+          <Property Name="erpCode" Type="bigint" Nullable="false" />
+          <Property Name="serie" Type="smallint" />
+          <Property Name="counterid" Type="bigint" />
+          <Property Name="protocolNumber" Type="bigint" />
+          <Property Name="processDate" Type="datetime" />
+          <Property Name="processMessage" Type="varchar" MaxLength="250" />
+          <Property Name="statusProcess" Type="smallint" Nullable="false" />
+          <Property Name="statusCTe" Type="smallint" Nullable="false" />
+          <Property Name="xmlInut" Type="varbinary(max)" />
+          <Property Name="station" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CTEGOL.dbo.tbcteLog' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbcteLog">
+          <Key>
+            <PropertyRef Name="idCte" />
+            <PropertyRef Name="evento" />
+            <PropertyRef Name="dataEvento" />
+            <PropertyRef Name="horaEvento" />
+          </Key>
+          <Property Name="idCte" Type="bigint" Nullable="false" />
+          <Property Name="evento" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="dataEvento" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="horaEvento" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="tipoMsg" Type="varchar" MaxLength="30" />
+          <Property Name="msg" Type="varchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CTEGOL.dbo.tbcteprocess' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbcteprocess">
+          <Key>
+            <PropertyRef Name="idcte" />
+          </Key>
+          <Property Name="idcte" Type="bigint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CTEGOL.dbo.tbctereceptionhistory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbctereceptionhistory">
+          <Key>
+            <PropertyRef Name="idReception" />
+            <PropertyRef Name="clientId" />
+            <PropertyRef Name="tipo" />
+            <PropertyRef Name="processDate" />
+            <PropertyRef Name="processHHMM" />
+          </Key>
+          <Property Name="idReception" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clientId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ref" Type="varchar" MaxLength="20" />
+          <Property Name="awb" Type="varchar" MaxLength="20" />
+          <Property Name="serie" Type="varchar" MaxLength="20" />
+          <Property Name="counterid" Type="varchar" MaxLength="20" />
+          <Property Name="tipo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="headerData" Type="varbinary(max)" />
+          <Property Name="documentData" Type="varbinary(max)" />
+          <Property Name="processDate" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="processHHMM" Type="varchar" MaxLength="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbcteref">
+          <Key>
+            <PropertyRef Name="idcte" />
+          </Key>
+          <Property Name="idcte" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clientId" Type="bigint" Nullable="false" />
+          <Property Name="erpCode" Type="bigint" Nullable="false" />
+          <Property Name="serie" Type="smallint" />
+          <Property Name="counterid" Type="bigint" />
+          <Property Name="eKey" Type="varchar" MaxLength="50" />
+          <Property Name="protocolNumber" Type="bigint" />
+          <Property Name="processDate" Type="datetime" />
+          <Property Name="processMessage" Type="varchar" MaxLength="250" />
+          <Property Name="statusProcess" Type="smallint" Nullable="false" />
+          <Property Name="statusCTe" Type="smallint" Nullable="false" />
+          <Property Name="inContingency" Type="smallint" Nullable="false" />
+          <Property Name="isCompress" Type="smallint" Nullable="false" />
+          <Property Name="additionalData" Type="varbinary(max)" Nullable="false" />
+          <Property Name="station" Type="varchar" MaxLength="50" />
+          <Property Name="createDate" Type="varchar" MaxLength="10" />
+          <Property Name="refId" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CTEGOL.dbo.tbcteRetorno' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbcteRetorno">
+          <Key>
+            <PropertyRef Name="idcte" />
+          </Key>
+          <Property Name="idcte" Type="bigint" Nullable="false" />
+          <Property Name="documentRetCTE" Type="varbinary(max)" />
+          <Property Name="statusCTe" Type="bigint" />
+          <Property Name="XMLRETORNODate" Type="bigint" />
+          <Property Name="XMLRETORNOHHMM" Type="bigint" />
+          <Property Name="processDate" Type="bigint" />
+          <Property Name="processHHMM" Type="bigint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CTEGOL.dbo.tbcteRetornoInut' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbcteRetornoInut">
+          <Key>
+            <PropertyRef Name="idcte" />
+          </Key>
+          <Property Name="idcte" Type="bigint" Nullable="false" />
+          <Property Name="documentRetCTE" Type="varbinary(max)" />
+          <Property Name="statusCTe" Type="bigint" />
+          <Property Name="XMLRETORNODate" Type="bigint" />
+          <Property Name="XMLRETORNOHHMM" Type="bigint" />
+          <Property Name="processDate" Type="bigint" />
+          <Property Name="processHHMM" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tbDefinitions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="station" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="CNPJ" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="IE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="fantasyName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="series" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="addrName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="number" Type="numeric" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="complement" Type="varchar" MaxLength="100" />
+          <Property Name="postcode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="city" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UF" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="flagEnviaIENaoContrib" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="tpImp" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="tpAmb" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="versionCTe" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="versionMDFe" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="procEmiCTe" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="procEmiMDFe" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="procVersionCTe" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="procVersionMDFe" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="modalCTe" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="modalMDFe" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="modCTe" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="modMDFe" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="directoryCTe" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="directoryMDFe" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="cancelMessageCTe" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="cancelMessageMDFe" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="inutMessageCTe" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="tpEmitMDFe" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="cUnidMDFe" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="usuarioCriacao" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="dataCriacao" Type="datetime" Nullable="false" />
+          <Property Name="usuarioAtualizacao" Type="varchar" MaxLength="100" />
+          <Property Name="dataAtualizacao" Type="datetime" />
+          <Property Name="dataVigenciaIni" Type="varchar" MaxLength="20" />
+          <Property Name="dataVigenciaFim" Type="varchar" MaxLength="20" />
+          <Property Name="status" Type="varchar" MaxLength="3" />
+          <Property Name="descComboBox" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CTEGOL.dbo.tbEstado' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbEstado">
+          <Key>
+            <PropertyRef Name="cdUF" />
+            <PropertyRef Name="estado" />
+            <PropertyRef Name="UF" />
+          </Key>
+          <Property Name="cdUF" Type="smallint" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="UF" Type="varchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbLog">
+          <Key>
+            <PropertyRef Name="idLog" />
+          </Key>
+          <Property Name="idLog" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tpDoc" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="tpLog" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="processMessage" Type="varchar" MaxLength="400" Nullable="false" />
+          <Property Name="processDate" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="processTime" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbmdfe">
+          <Key>
+            <PropertyRef Name="idMdfe" />
+          </Key>
+          <Property Name="idMdfe" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="chaveMDFe" Type="varchar" MaxLength="50" />
+          <Property Name="protocolNumber" Type="bigint" />
+          <Property Name="processDate" Type="varchar" MaxLength="10" />
+          <Property Name="processMessage" Type="varchar" MaxLength="250" />
+          <Property Name="statusProcess" Type="smallint" />
+          <Property Name="statusMDFe" Type="smallint" />
+          <Property Name="origemManifesto" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="destinoManifesto" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="numVoo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="dataVoo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="txtDate" Type="varchar" MaxLength="10" />
+          <Property Name="serie" Type="varchar" MaxLength="10" />
+          <Property Name="counterid" Type="varchar" MaxLength="20" />
+          <Property Name="processHHMM" Type="varchar" MaxLength="4" />
+          <Property Name="authorizationDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbmdfecancel">
+          <Key>
+            <PropertyRef Name="idtbmdfe" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idtbmdfe" Type="bigint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CTEGOL.dbo.tbmdfeColdFiles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbmdfeColdFiles">
+          <Key>
+            <PropertyRef Name="origemManifesto" />
+            <PropertyRef Name="destinoManifesto" />
+            <PropertyRef Name="numVoo" />
+            <PropertyRef Name="dataVoo" />
+            <PropertyRef Name="processDate" />
+            <PropertyRef Name="processHHMM" />
+          </Key>
+          <Property Name="origemManifesto" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="destinoManifesto" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="numVoo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="dataVoo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="documentData" Type="varbinary(max)" />
+          <Property Name="processDate" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="processHHMM" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="serie" Type="varchar" MaxLength="10" />
+          <Property Name="counterId" Type="varchar" MaxLength="10" />
+          <Property Name="qtdeReq" Type="smallint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CTEGOL.dbo.tbmdfedamdfe' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbmdfedamdfe">
+          <Key>
+            <PropertyRef Name="idmdfe" />
+          </Key>
+          <Property Name="xml" Type="varbinary(max)" />
+          <Property Name="idmdfe" Type="bigint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CTEGOL.dbo.tbmdfedetalhe' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbmdfedetalhe">
+          <Key>
+            <PropertyRef Name="origemManifesto" />
+            <PropertyRef Name="destinoManifesto" />
+            <PropertyRef Name="numVoo" />
+            <PropertyRef Name="dataVoo" />
+            <PropertyRef Name="idmdfe" />
+          </Key>
+          <Property Name="erpCode" Type="varchar" MaxLength="15" />
+          <Property Name="chaveCTe" Type="varchar" MaxLength="50" />
+          <Property Name="serie" Type="smallint" />
+          <Property Name="counterid" Type="bigint" />
+          <Property Name="origemManifesto" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="destinoManifesto" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="numVoo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="dataVoo" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="idmdfe" Type="bigint" Nullable="false" />
+          <Property Name="valorTotalAWB" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="peso" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="pecas" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="pecasAWB" Type="numeric" Precision="18" Scale="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CTEGOL.dbo.tbmdfedocument' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbmdfedocument">
+          <Key>
+            <PropertyRef Name="idmdfe" />
+          </Key>
+          <Property Name="idmdfe" Type="bigint" Nullable="false" />
+          <Property Name="documentData" Type="varbinary(max)" />
+          <Property Name="documentMDFE" Type="varbinary(max)" />
+          <Property Name="documentMDFECanc" Type="varbinary(max)" />
+          <Property Name="documentMDFEEncer" Type="varbinary(max)" />
+          <Property Name="sendingDate" Type="datetime" />
+          <Property Name="interfaceSendingDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CTEGOL.dbo.tbmdfeprintrequest' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbmdfeprintrequest">
+          <Key>
+            <PropertyRef Name="numVoo" />
+            <PropertyRef Name="dataVoo" />
+            <PropertyRef Name="processDate" />
+            <PropertyRef Name="processHHMM" />
+          </Key>
+          <Property Name="serie" Type="varchar" MaxLength="10" />
+          <Property Name="counterid" Type="varchar" MaxLength="20" />
+          <Property Name="numVoo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="dataVoo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="documentData" Type="varbinary(max)" />
+          <Property Name="processDate" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="processHHMM" Type="varchar" MaxLength="4" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CTEGOL.dbo.tbmdfeprocess' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbmdfeprocess">
+          <Key>
+            <PropertyRef Name="idmdfe" />
+          </Key>
+          <Property Name="idmdfe" Type="bigint" Nullable="false" />
+          <Property Name="idActionType" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CTEGOL.dbo.tbmdfereceptionhistory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbmdfereceptionhistory">
+          <Key>
+            <PropertyRef Name="origemManifesto" />
+            <PropertyRef Name="destinoManifesto" />
+            <PropertyRef Name="numVoo" />
+            <PropertyRef Name="dataVoo" />
+            <PropertyRef Name="processDate" />
+            <PropertyRef Name="processHHMM" />
+          </Key>
+          <Property Name="origemManifesto" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="destinoManifesto" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="numVoo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="dataVoo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="documentData" Type="varbinary(max)" />
+          <Property Name="processDate" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="processHHMM" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="actionTag" Type="char" MaxLength="1" />
+          <Property Name="serie" Type="varchar" MaxLength="10" />
+          <Property Name="counterId" Type="varchar" MaxLength="10" />
+          <Property Name="status" Type="smallint" />
+          <Property Name="statusDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CTEGOL.dbo.tbmdfereceptionhistoryBKP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbmdfereceptionhistoryBKP">
+          <Key>
+            <PropertyRef Name="origemManifesto" />
+            <PropertyRef Name="destinoManifesto" />
+            <PropertyRef Name="numVoo" />
+            <PropertyRef Name="dataVoo" />
+            <PropertyRef Name="processDate" />
+            <PropertyRef Name="processHHMM" />
+          </Key>
+          <Property Name="origemManifesto" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="destinoManifesto" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="numVoo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="dataVoo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="documentData" Type="varbinary(max)" />
+          <Property Name="processDate" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="processHHMM" Type="varchar" MaxLength="4" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CTEGOL.dbo.tbmdfeRetorno' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbmdfeRetorno">
+          <Key>
+            <PropertyRef Name="idmdfe" />
+          </Key>
+          <Property Name="idmdfe" Type="bigint" Nullable="false" />
+          <Property Name="documentRetMDFE" Type="varbinary(max)" />
+          <Property Name="processDate" Type="varchar" MaxLength="8" />
+          <Property Name="processHHMM" Type="varchar" MaxLength="6" />
+          <Property Name="statusMDFe" Type="smallint" />
+          <Property Name="xmlRetornoDate" Type="varchar" MaxLength="10" />
+          <Property Name="xmlRetornoHHMM" Type="varchar" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="tbMigrationFile1">
+          <Key>
+            <PropertyRef Name="AWB_ID" />
+          </Key>
+          <Property Name="ODN" Type="varchar" MaxLength="80" />
+          <Property Name="AWB_ID" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="AirlineCode" Type="varchar" MaxLength="80" />
+          <Property Name="Issuance" Type="varchar" MaxLength="80" />
+          <Property Name="MAWB_Number" Type="varchar" MaxLength="80" />
+          <Property Name="Origin_Station" Type="varchar" MaxLength="80" />
+          <Property Name="Destination_Station" Type="varchar" MaxLength="80" />
+          <Property Name="Payment_Method" Type="varchar" MaxLength="10" />
+          <Property Name="Product_Code" Type="varchar" MaxLength="80" />
+          <Property Name="UTC_Creation" Type="varchar" MaxLength="80" />
+          <Property Name="Local_Creation" Type="varchar" MaxLength="80" />
+          <Property Name="Currency_Code" Type="varchar" MaxLength="80" />
+          <Property Name="Freight_Amount" Type="varchar" MaxLength="80" />
+          <Property Name="Fare_Amount" Type="varchar" MaxLength="80" />
+          <Property Name="Fare_Type" Type="varchar" MaxLength="80" />
+          <Property Name="Declared_Amount" Type="varchar" MaxLength="80" />
+          <Property Name="Insurance_Number" Type="varchar" MaxLength="80" />
+          <Property Name="Insurance" Type="varchar" MaxLength="10" />
+          <Property Name="Observation" Type="varchar" MaxLength="80" />
+          <Property Name="CFOPNumber" Type="varchar" MaxLength="80" />
+          <Property Name="User_Code_Creation" Type="varchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="tbMigrationFile8">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OND" Type="varchar" MaxLength="80" />
+          <Property Name="AWB_ID" Type="varchar" MaxLength="80" />
+          <Property Name="ChaveCte" Type="varchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="tbMigrationTeste">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ODN" Type="varchar" MaxLength="80" />
+          <Property Name="AWB_ID" Type="varchar" MaxLength="80" />
+          <Property Name="AirlineCode" Type="varchar" MaxLength="80" />
+          <Property Name="Issuance" Type="varchar" MaxLength="80" />
+          <Property Name="MAWB_Number" Type="varchar" MaxLength="80" />
+          <Property Name="Origin_Station" Type="varchar" MaxLength="80" />
+          <Property Name="Destination_Station" Type="varchar" MaxLength="80" />
+          <Property Name="Payment_Method" Type="varchar" MaxLength="10" />
+          <Property Name="Product_Code" Type="varchar" MaxLength="80" />
+          <Property Name="UTC_Creation" Type="varchar" MaxLength="80" />
+          <Property Name="Local_Creation" Type="varchar" MaxLength="80" />
+          <Property Name="Currency_Code" Type="varchar" MaxLength="80" />
+          <Property Name="Freight_Amount" Type="varchar" MaxLength="80" />
+          <Property Name="Fare_Amount" Type="varchar" MaxLength="80" />
+          <Property Name="Fare_Type" Type="varchar" MaxLength="80" />
+          <Property Name="Declared_Amount" Type="varchar" MaxLength="80" />
+          <Property Name="Insurance_Number" Type="varchar" MaxLength="80" />
+          <Property Name="Insurance" Type="varchar" MaxLength="10" />
+          <Property Name="Observation" Type="varchar" MaxLength="80" />
+          <Property Name="CFOPNumber" Type="varchar" MaxLength="80" />
+          <Property Name="User_Code_Creation" Type="varchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="tbMunicipio">
+          <Key>
+            <PropertyRef Name="idMun" />
+          </Key>
+          <Property Name="idMun" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cdUF" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="cdMun" Type="int" Nullable="false" />
+          <Property Name="descMun" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbUsuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usuario" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="senha" Type="varchar" MaxLength="255" />
+          <Property Name="nomeUsuario" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="dominio" Type="varchar" MaxLength="30" />
+          <Property Name="dtCreate" Type="datetime" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="2" />
+          <Property Name="dtIniVigencia" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="dtfimVigencia" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="dtUpdate" Type="datetime" />
+          <Property Name="userUpdate" Type="varchar" MaxLength="20" />
+          <Property Name="userCreate" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__tbCTeEven__idCTe__5A846E65">
+          <End Role="tbCTeEvento" Type="Self.tbCTeEvento" Multiplicity="1" />
+          <End Role="tbCTeEventoDocument" Type="Self.tbCTeEventoDocument" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbCTeEvento">
+              <PropertyRef Name="idCTeEvento" />
+            </Principal>
+            <Dependent Role="tbCTeEventoDocument">
+              <PropertyRef Name="idCTeEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbctedocument_tbcte">
+          <End Role="tbcte" Type="Self.tbcte" Multiplicity="1" />
+          <End Role="tbctedocument" Type="Self.tbctedocument" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbcte">
+              <PropertyRef Name="idcte" />
+            </Principal>
+            <Dependent Role="tbctedocument">
+              <PropertyRef Name="idcte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbCTeEventoProcess_tbCTeEvento">
+          <End Role="tbCTeEvento" Type="Self.tbCTeEvento" Multiplicity="1" />
+          <End Role="tbCTeEventoProcess" Type="Self.tbCTeEventoProcess" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbCTeEvento">
+              <PropertyRef Name="idCTeEvento" />
+            </Principal>
+            <Dependent Role="tbCTeEventoProcess">
+              <PropertyRef Name="idCTeEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbCTeEventoRetorno">
+          <End Role="tbCTeEvento" Type="Self.tbCTeEvento" Multiplicity="1" />
+          <End Role="tbCTeEventoRetorno" Type="Self.tbCTeEventoRetorno" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbCTeEvento">
+              <PropertyRef Name="idCTeEvento" />
+            </Principal>
+            <Dependent Role="tbCTeEventoRetorno">
+              <PropertyRef Name="idCTeEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbcteprocess_tbcte">
+          <End Role="tbcte" Type="Self.tbcte" Multiplicity="1" />
+          <End Role="tbcteprocess" Type="Self.tbcteprocess" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbcte">
+              <PropertyRef Name="idcte" />
+            </Principal>
+            <Dependent Role="tbcteprocess">
+              <PropertyRef Name="idcte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbcteRetorno_tbcte">
+          <End Role="tbcte" Type="Self.tbcte" Multiplicity="1" />
+          <End Role="tbcteRetorno" Type="Self.tbcteRetorno" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbcte">
+              <PropertyRef Name="idcte" />
+            </Principal>
+            <Dependent Role="tbcteRetorno">
+              <PropertyRef Name="idcte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbcteRetornoInut_tbcte">
+          <End Role="tbcteinut" Type="Self.tbcteinut" Multiplicity="1" />
+          <End Role="tbcteRetornoInut" Type="Self.tbcteRetornoInut" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbcteinut">
+              <PropertyRef Name="idcte" />
+            </Principal>
+            <Dependent Role="tbcteRetornoInut">
+              <PropertyRef Name="idcte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbmdfedetalhe_tbmdfe">
+          <End Role="tbmdfe" Type="Self.tbmdfe" Multiplicity="1" />
+          <End Role="tbmdfedetalhe" Type="Self.tbmdfedetalhe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbmdfe">
+              <PropertyRef Name="idMdfe" />
+            </Principal>
+            <Dependent Role="tbmdfedetalhe">
+              <PropertyRef Name="idmdfe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbmdfedocument_tbmdfe">
+          <End Role="tbmdfe" Type="Self.tbmdfe" Multiplicity="1" />
+          <End Role="tbmdfedocument" Type="Self.tbmdfedocument" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbmdfe">
+              <PropertyRef Name="idMdfe" />
+            </Principal>
+            <Dependent Role="tbmdfedocument">
+              <PropertyRef Name="idmdfe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbmdfeprocess_tbcte">
+          <End Role="tbmdfe" Type="Self.tbmdfe" Multiplicity="1" />
+          <End Role="tbmdfeprocess" Type="Self.tbmdfeprocess" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbmdfe">
+              <PropertyRef Name="idMdfe" />
+            </Principal>
+            <Dependent Role="tbmdfeprocess">
+              <PropertyRef Name="idmdfe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbmdfeRetorno_tbmdfe">
+          <End Role="tbmdfe" Type="Self.tbmdfe" Multiplicity="1" />
+          <End Role="tbmdfeRetorno" Type="Self.tbmdfeRetorno" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbmdfe">
+              <PropertyRef Name="idMdfe" />
+            </Principal>
+            <Dependent Role="tbmdfeRetorno">
+              <PropertyRef Name="idmdfe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CTEGOLModelStoreContainer">
+          <EntitySet Name="tbcte" EntityType="Self.tbcte" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbctecancel" EntityType="Self.tbctecancel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbctedocument" EntityType="Self.tbctedocument" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbCTeEvento" EntityType="Self.tbCTeEvento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbcteinut" EntityType="Self.tbcteinut" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbcteref" EntityType="Self.tbcteref" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbDefinitions" EntityType="Self.tbDefinitions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbLog" EntityType="Self.tbLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbmdfe" EntityType="Self.tbmdfe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbmdfecancel" EntityType="Self.tbmdfecancel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbMigrationFile1" EntityType="Self.tbMigrationFile1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbMigrationFile8" EntityType="Self.tbMigrationFile8" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbMigrationTeste" EntityType="Self.tbMigrationTeste" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbMunicipio" EntityType="Self.tbMunicipio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbUsuario" EntityType="Self.tbUsuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbcteCargaEspecial" EntityType="Self.tbcteCargaEspecial" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbcteCargaEspecial].[cdCargaEspecial] AS [cdCargaEspecial], 
+    [tbcteCargaEspecial].[descricao] AS [descricao]
+    FROM [dbo].[tbcteCargaEspecial] AS [tbcteCargaEspecial]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbcteemail" EntityType="Self.tbcteemail" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbcteemail].[CPFCNPJ] AS [CPFCNPJ], 
+    [tbcteemail].[EMAIL] AS [EMAIL], 
+    [tbcteemail].[createDate] AS [createDate], 
+    [tbcteemail].[updateDate] AS [updateDate], 
+    [tbcteemail].[Id_Email] AS [Id_Email], 
+    [tbcteemail].[userUpdate] AS [userUpdate], 
+    [tbcteemail].[userCreate] AS [userCreate], 
+    [tbcteemail].[status] AS [status]
+    FROM [dbo].[tbcteemail] AS [tbcteemail]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbCTeEventoDocument" EntityType="Self.tbCTeEventoDocument" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbCTeEventoDocument].[idCTeEvento] AS [idCTeEvento], 
+    [tbCTeEventoDocument].[documentCabec] AS [documentCabec], 
+    [tbCTeEventoDocument].[documentCTeOriginal] AS [documentCTeOriginal], 
+    [tbCTeEventoDocument].[documentData] AS [documentData], 
+    [tbCTeEventoDocument].[documentEvento] AS [documentEvento], 
+    [tbCTeEventoDocument].[interfaceSendingDate] AS [interfaceSendingDate], 
+    [tbCTeEventoDocument].[MASTERSAFSENDINGDATE] AS [MASTERSAFSENDINGDATE]
+    FROM [dbo].[tbCTeEventoDocument] AS [tbCTeEventoDocument]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbCTeEventoProcess" EntityType="Self.tbCTeEventoProcess" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbCTeEventoProcess].[idCTeEvento] AS [idCTeEvento]
+    FROM [dbo].[tbCTeEventoProcess] AS [tbCTeEventoProcess]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbCTeEventoRetorno" EntityType="Self.tbCTeEventoRetorno" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbCTeEventoRetorno].[idCTeEvento] AS [idCTeEvento], 
+    [tbCTeEventoRetorno].[documentRetCTeEvento] AS [documentRetCTeEvento], 
+    [tbCTeEventoRetorno].[statusCTe] AS [statusCTe], 
+    [tbCTeEventoRetorno].[XMLRETORNODate] AS [XMLRETORNODate], 
+    [tbCTeEventoRetorno].[XMLRETORNOHHMM] AS [XMLRETORNOHHMM], 
+    [tbCTeEventoRetorno].[processDate] AS [processDate], 
+    [tbCTeEventoRetorno].[processHHMM] AS [processHHMM]
+    FROM [dbo].[tbCTeEventoRetorno] AS [tbCTeEventoRetorno]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbcteLog" EntityType="Self.tbcteLog" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbcteLog].[idCte] AS [idCte], 
+    [tbcteLog].[evento] AS [evento], 
+    [tbcteLog].[dataEvento] AS [dataEvento], 
+    [tbcteLog].[horaEvento] AS [horaEvento], 
+    [tbcteLog].[tipoMsg] AS [tipoMsg], 
+    [tbcteLog].[msg] AS [msg]
+    FROM [dbo].[tbcteLog] AS [tbcteLog]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbcteprocess" EntityType="Self.tbcteprocess" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbcteprocess].[idcte] AS [idcte]
+    FROM [dbo].[tbcteprocess] AS [tbcteprocess]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbctereceptionhistory" EntityType="Self.tbctereceptionhistory" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbctereceptionhistory].[idReception] AS [idReception], 
+    [tbctereceptionhistory].[clientId] AS [clientId], 
+    [tbctereceptionhistory].[ref] AS [ref], 
+    [tbctereceptionhistory].[awb] AS [awb], 
+    [tbctereceptionhistory].[serie] AS [serie], 
+    [tbctereceptionhistory].[counterid] AS [counterid], 
+    [tbctereceptionhistory].[tipo] AS [tipo], 
+    [tbctereceptionhistory].[headerData] AS [headerData], 
+    [tbctereceptionhistory].[documentData] AS [documentData], 
+    [tbctereceptionhistory].[processDate] AS [processDate], 
+    [tbctereceptionhistory].[processHHMM] AS [processHHMM]
+    FROM [dbo].[tbctereceptionhistory] AS [tbctereceptionhistory]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbcteRetorno" EntityType="Self.tbcteRetorno" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbcteRetorno].[idcte] AS [idcte], 
+    [tbcteRetorno].[documentRetCTE] AS [documentRetCTE], 
+    [tbcteRetorno].[statusCTe] AS [statusCTe], 
+    [tbcteRetorno].[XMLRETORNODate] AS [XMLRETORNODate], 
+    [tbcteRetorno].[XMLRETORNOHHMM] AS [XMLRETORNOHHMM], 
+    [tbcteRetorno].[processDate] AS [processDate], 
+    [tbcteRetorno].[processHHMM] AS [processHHMM]
+    FROM [dbo].[tbcteRetorno] AS [tbcteRetorno]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbcteRetornoInut" EntityType="Self.tbcteRetornoInut" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbcteRetornoInut].[idcte] AS [idcte], 
+    [tbcteRetornoInut].[documentRetCTE] AS [documentRetCTE], 
+    [tbcteRetornoInut].[statusCTe] AS [statusCTe], 
+    [tbcteRetornoInut].[XMLRETORNODate] AS [XMLRETORNODate], 
+    [tbcteRetornoInut].[XMLRETORNOHHMM] AS [XMLRETORNOHHMM], 
+    [tbcteRetornoInut].[processDate] AS [processDate], 
+    [tbcteRetornoInut].[processHHMM] AS [processHHMM]
+    FROM [dbo].[tbcteRetornoInut] AS [tbcteRetornoInut]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbEstado" EntityType="Self.tbEstado" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbEstado].[cdUF] AS [cdUF], 
+    [tbEstado].[estado] AS [estado], 
+    [tbEstado].[UF] AS [UF]
+    FROM [dbo].[tbEstado] AS [tbEstado]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbmdfeColdFiles" EntityType="Self.tbmdfeColdFiles" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbmdfeColdFiles].[origemManifesto] AS [origemManifesto], 
+    [tbmdfeColdFiles].[destinoManifesto] AS [destinoManifesto], 
+    [tbmdfeColdFiles].[numVoo] AS [numVoo], 
+    [tbmdfeColdFiles].[dataVoo] AS [dataVoo], 
+    [tbmdfeColdFiles].[documentData] AS [documentData], 
+    [tbmdfeColdFiles].[processDate] AS [processDate], 
+    [tbmdfeColdFiles].[processHHMM] AS [processHHMM], 
+    [tbmdfeColdFiles].[serie] AS [serie], 
+    [tbmdfeColdFiles].[counterId] AS [counterId], 
+    [tbmdfeColdFiles].[qtdeReq] AS [qtdeReq]
+    FROM [dbo].[tbmdfeColdFiles] AS [tbmdfeColdFiles]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbmdfedamdfe" EntityType="Self.tbmdfedamdfe" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbmdfedamdfe].[xml] AS [xml], 
+    [tbmdfedamdfe].[idmdfe] AS [idmdfe]
+    FROM [dbo].[tbmdfedamdfe] AS [tbmdfedamdfe]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbmdfedetalhe" EntityType="Self.tbmdfedetalhe" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbmdfedetalhe].[erpCode] AS [erpCode], 
+    [tbmdfedetalhe].[chaveCTe] AS [chaveCTe], 
+    [tbmdfedetalhe].[serie] AS [serie], 
+    [tbmdfedetalhe].[counterid] AS [counterid], 
+    [tbmdfedetalhe].[origemManifesto] AS [origemManifesto], 
+    [tbmdfedetalhe].[destinoManifesto] AS [destinoManifesto], 
+    [tbmdfedetalhe].[numVoo] AS [numVoo], 
+    [tbmdfedetalhe].[dataVoo] AS [dataVoo], 
+    [tbmdfedetalhe].[idmdfe] AS [idmdfe], 
+    [tbmdfedetalhe].[valorTotalAWB] AS [valorTotalAWB], 
+    [tbmdfedetalhe].[peso] AS [peso], 
+    [tbmdfedetalhe].[pecas] AS [pecas], 
+    [tbmdfedetalhe].[pecasAWB] AS [pecasAWB]
+    FROM [dbo].[tbmdfedetalhe] AS [tbmdfedetalhe]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbmdfedocument" EntityType="Self.tbmdfedocument" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbmdfedocument].[idmdfe] AS [idmdfe], 
+    [tbmdfedocument].[documentData] AS [documentData], 
+    [tbmdfedocument].[documentMDFE] AS [documentMDFE], 
+    [tbmdfedocument].[documentMDFECanc] AS [documentMDFECanc], 
+    [tbmdfedocument].[documentMDFEEncer] AS [documentMDFEEncer], 
+    [tbmdfedocument].[sendingDate] AS [sendingDate], 
+    [tbmdfedocument].[interfaceSendingDate] AS [interfaceSendingDate]
+    FROM [dbo].[tbmdfedocument] AS [tbmdfedocument]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbmdfeprintrequest" EntityType="Self.tbmdfeprintrequest" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbmdfeprintrequest].[serie] AS [serie], 
+    [tbmdfeprintrequest].[counterid] AS [counterid], 
+    [tbmdfeprintrequest].[numVoo] AS [numVoo], 
+    [tbmdfeprintrequest].[dataVoo] AS [dataVoo], 
+    [tbmdfeprintrequest].[documentData] AS [documentData], 
+    [tbmdfeprintrequest].[processDate] AS [processDate], 
+    [tbmdfeprintrequest].[processHHMM] AS [processHHMM]
+    FROM [dbo].[tbmdfeprintrequest] AS [tbmdfeprintrequest]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbmdfeprocess" EntityType="Self.tbmdfeprocess" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbmdfeprocess].[idmdfe] AS [idmdfe], 
+    [tbmdfeprocess].[idActionType] AS [idActionType]
+    FROM [dbo].[tbmdfeprocess] AS [tbmdfeprocess]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbmdfereceptionhistory" EntityType="Self.tbmdfereceptionhistory" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbmdfereceptionhistory].[origemManifesto] AS [origemManifesto], 
+    [tbmdfereceptionhistory].[destinoManifesto] AS [destinoManifesto], 
+    [tbmdfereceptionhistory].[numVoo] AS [numVoo], 
+    [tbmdfereceptionhistory].[dataVoo] AS [dataVoo], 
+    [tbmdfereceptionhistory].[documentData] AS [documentData], 
+    [tbmdfereceptionhistory].[processDate] AS [processDate], 
+    [tbmdfereceptionhistory].[processHHMM] AS [processHHMM], 
+    [tbmdfereceptionhistory].[actionTag] AS [actionTag], 
+    [tbmdfereceptionhistory].[serie] AS [serie], 
+    [tbmdfereceptionhistory].[counterId] AS [counterId], 
+    [tbmdfereceptionhistory].[status] AS [status], 
+    [tbmdfereceptionhistory].[statusDate] AS [statusDate]
+    FROM [dbo].[tbmdfereceptionhistory] AS [tbmdfereceptionhistory]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbmdfereceptionhistoryBKP" EntityType="Self.tbmdfereceptionhistoryBKP" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbmdfereceptionhistoryBKP].[origemManifesto] AS [origemManifesto], 
+    [tbmdfereceptionhistoryBKP].[destinoManifesto] AS [destinoManifesto], 
+    [tbmdfereceptionhistoryBKP].[numVoo] AS [numVoo], 
+    [tbmdfereceptionhistoryBKP].[dataVoo] AS [dataVoo], 
+    [tbmdfereceptionhistoryBKP].[documentData] AS [documentData], 
+    [tbmdfereceptionhistoryBKP].[processDate] AS [processDate], 
+    [tbmdfereceptionhistoryBKP].[processHHMM] AS [processHHMM]
+    FROM [dbo].[tbmdfereceptionhistoryBKP] AS [tbmdfereceptionhistoryBKP]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbmdfeRetorno" EntityType="Self.tbmdfeRetorno" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbmdfeRetorno].[idmdfe] AS [idmdfe], 
+    [tbmdfeRetorno].[documentRetMDFE] AS [documentRetMDFE], 
+    [tbmdfeRetorno].[processDate] AS [processDate], 
+    [tbmdfeRetorno].[processHHMM] AS [processHHMM], 
+    [tbmdfeRetorno].[statusMDFe] AS [statusMDFe], 
+    [tbmdfeRetorno].[xmlRetornoDate] AS [xmlRetornoDate], 
+    [tbmdfeRetorno].[xmlRetornoHHMM] AS [xmlRetornoHHMM]
+    FROM [dbo].[tbmdfeRetorno] AS [tbmdfeRetorno]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__tbCTeEven__idCTe__5A846E65" Association="Self.FK__tbCTeEven__idCTe__5A846E65">
+            <End Role="tbCTeEvento" EntitySet="tbCTeEvento" />
+            <End Role="tbCTeEventoDocument" EntitySet="tbCTeEventoDocument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbctedocument_tbcte" Association="Self.FK_tbctedocument_tbcte">
+            <End Role="tbcte" EntitySet="tbcte" />
+            <End Role="tbctedocument" EntitySet="tbctedocument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbCTeEventoProcess_tbCTeEvento" Association="Self.FK_tbCTeEventoProcess_tbCTeEvento">
+            <End Role="tbCTeEvento" EntitySet="tbCTeEvento" />
+            <End Role="tbCTeEventoProcess" EntitySet="tbCTeEventoProcess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbCTeEventoRetorno" Association="Self.FK_tbCTeEventoRetorno">
+            <End Role="tbCTeEvento" EntitySet="tbCTeEvento" />
+            <End Role="tbCTeEventoRetorno" EntitySet="tbCTeEventoRetorno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbcteprocess_tbcte" Association="Self.FK_tbcteprocess_tbcte">
+            <End Role="tbcte" EntitySet="tbcte" />
+            <End Role="tbcteprocess" EntitySet="tbcteprocess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbcteRetorno_tbcte" Association="Self.FK_tbcteRetorno_tbcte">
+            <End Role="tbcte" EntitySet="tbcte" />
+            <End Role="tbcteRetorno" EntitySet="tbcteRetorno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbcteRetornoInut_tbcte" Association="Self.FK_tbcteRetornoInut_tbcte">
+            <End Role="tbcteinut" EntitySet="tbcteinut" />
+            <End Role="tbcteRetornoInut" EntitySet="tbcteRetornoInut" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbmdfedetalhe_tbmdfe" Association="Self.FK_tbmdfedetalhe_tbmdfe">
+            <End Role="tbmdfe" EntitySet="tbmdfe" />
+            <End Role="tbmdfedetalhe" EntitySet="tbmdfedetalhe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbmdfedocument_tbmdfe" Association="Self.FK_tbmdfedocument_tbmdfe">
+            <End Role="tbmdfe" EntitySet="tbmdfe" />
+            <End Role="tbmdfedocument" EntitySet="tbmdfedocument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbmdfeprocess_tbcte" Association="Self.FK_tbmdfeprocess_tbcte">
+            <End Role="tbmdfe" EntitySet="tbmdfe" />
+            <End Role="tbmdfeprocess" EntitySet="tbmdfeprocess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbmdfeRetorno_tbmdfe" Association="Self.FK_tbmdfeRetorno_tbmdfe">
+            <End Role="tbmdfe" EntitySet="tbmdfe" />
+            <End Role="tbmdfeRetorno" EntitySet="tbmdfeRetorno" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CTEGOLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbcte">
+          <Key>
+            <PropertyRef Name="idcte" />
+          </Key>
+          <Property Name="idcte" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clientId" Type="Int64" Nullable="false" />
+          <Property Name="erpCode" Type="Int64" Nullable="false" />
+          <Property Name="serie" Type="Int16" />
+          <Property Name="counterid" Type="Int64" />
+          <Property Name="eKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="protocolNumber" Type="Int64" />
+          <Property Name="processDate" Type="DateTime" Precision="3" />
+          <Property Name="processMessage" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="statusProcess" Type="Int16" Nullable="false" />
+          <Property Name="statusCTe" Type="Int16" Nullable="false" />
+          <Property Name="inContingency" Type="Int16" Nullable="false" />
+          <Property Name="isCompress" Type="Int16" Nullable="false" />
+          <Property Name="station" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="authorizationDate" Type="DateTime" Precision="3" />
+          <Property Name="cancelDate" Type="DateTime" Precision="3" />
+          <Property Name="createDate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CNPJ" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbctedocument" Relationship="Self.FK_tbctedocument_tbcte" FromRole="tbcte" ToRole="tbctedocument" />
+          <NavigationProperty Name="tbcteprocess" Relationship="Self.FK_tbcteprocess_tbcte" FromRole="tbcte" ToRole="tbcteprocess" />
+          <NavigationProperty Name="tbcteRetorno" Relationship="Self.FK_tbcteRetorno_tbcte" FromRole="tbcte" ToRole="tbcteRetorno" />
+        </EntityType>
+        <EntityType Name="tbctecancel">
+          <Key>
+            <PropertyRef Name="idtbcte" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idtbcte" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbctedocument">
+          <Key>
+            <PropertyRef Name="idcte" />
+          </Key>
+          <Property Name="idcte" Type="Int64" Nullable="false" />
+          <Property Name="additionalData" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="documentData" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="documentCTe" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="interfaceSendingDate" Type="DateTime" Precision="3" />
+          <Property Name="documentCTeCanc" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="mastersafSendingDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbcte" Relationship="Self.FK_tbctedocument_tbcte" FromRole="tbctedocument" ToRole="tbcte" />
+        </EntityType>
+        <EntityType Name="tbCTeEvento">
+          <Key>
+            <PropertyRef Name="idCTeEvento" />
+          </Key>
+          <Property Name="idCTeEvento" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clientId" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="erpCode" Type="Int64" />
+          <Property Name="serie" Type="Int16" />
+          <Property Name="counterId" Type="Int64" />
+          <Property Name="eKey" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="protocolNumber" Type="Int64" />
+          <Property Name="processDate" Type="DateTime" Precision="3" />
+          <Property Name="processMessage" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="statusProcess" Type="Int16" />
+          <Property Name="statusCTe" Type="Int16" />
+          <Property Name="station" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cnpj" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="qtdeEvento" Type="Int64" />
+          <Property Name="tipoEvento" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="eKeyEvento" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbCTeEventoDocument" Relationship="Self.FK__tbCTeEven__idCTe__5A846E65" FromRole="tbCTeEvento" ToRole="tbCTeEventoDocument" />
+          <NavigationProperty Name="tbCTeEventoProcess" Relationship="Self.FK_tbCTeEventoProcess_tbCTeEvento" FromRole="tbCTeEvento" ToRole="tbCTeEventoProcess" />
+          <NavigationProperty Name="tbCTeEventoRetorno" Relationship="Self.FK_tbCTeEventoRetorno" FromRole="tbCTeEvento" ToRole="tbCTeEventoRetorno" />
+        </EntityType>
+        <EntityType Name="tbcteinut">
+          <Key>
+            <PropertyRef Name="idcte" />
+          </Key>
+          <Property Name="idcte" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cnpjEmissor" Type="Int64" Nullable="false" />
+          <Property Name="clientId" Type="Int64" Nullable="false" />
+          <Property Name="erpCode" Type="Int64" Nullable="false" />
+          <Property Name="serie" Type="Int16" />
+          <Property Name="counterid" Type="Int64" />
+          <Property Name="protocolNumber" Type="Int64" />
+          <Property Name="processDate" Type="DateTime" Precision="3" />
+          <Property Name="processMessage" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="statusProcess" Type="Int16" Nullable="false" />
+          <Property Name="statusCTe" Type="Int16" Nullable="false" />
+          <Property Name="xmlInut" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="station" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbcteRetornoInut" Relationship="Self.FK_tbcteRetornoInut_tbcte" FromRole="tbcteinut" ToRole="tbcteRetornoInut" />
+        </EntityType>
+        <EntityType Name="tbcteref">
+          <Key>
+            <PropertyRef Name="idcte" />
+          </Key>
+          <Property Name="idcte" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clientId" Type="Int64" Nullable="false" />
+          <Property Name="erpCode" Type="Int64" Nullable="false" />
+          <Property Name="serie" Type="Int16" />
+          <Property Name="counterid" Type="Int64" />
+          <Property Name="eKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="protocolNumber" Type="Int64" />
+          <Property Name="processDate" Type="DateTime" Precision="3" />
+          <Property Name="processMessage" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="statusProcess" Type="Int16" Nullable="false" />
+          <Property Name="statusCTe" Type="Int16" Nullable="false" />
+          <Property Name="inContingency" Type="Int16" Nullable="false" />
+          <Property Name="isCompress" Type="Int16" Nullable="false" />
+          <Property Name="additionalData" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="station" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="createDate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="refId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbDefinition">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="station" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CNPJ" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fantasyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="series" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="addrName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="number" Type="Decimal" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="complement" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="postcode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UF" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="flagEnviaIENaoContrib" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tpImp" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="tpAmb" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="versionCTe" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="versionMDFe" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="procEmiCTe" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="procEmiMDFe" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="procVersionCTe" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="procVersionMDFe" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modalCTe" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modalMDFe" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modCTe" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modMDFe" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="directoryCTe" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="directoryMDFe" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cancelMessageCTe" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cancelMessageMDFe" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="inutMessageCTe" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tpEmitMDFe" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="cUnidMDFe" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usuarioCriacao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dataCriacao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usuarioAtualizacao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dataAtualizacao" Type="DateTime" Precision="3" />
+          <Property Name="dataVigenciaIni" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="dataVigenciaFim" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="descComboBox" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbLog">
+          <Key>
+            <PropertyRef Name="idLog" />
+          </Key>
+          <Property Name="idLog" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tpDoc" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tpLog" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="processMessage" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="processDate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="processTime" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbmdfe">
+          <Key>
+            <PropertyRef Name="idMdfe" />
+          </Key>
+          <Property Name="idMdfe" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="chaveMDFe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="protocolNumber" Type="Int64" />
+          <Property Name="processDate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="processMessage" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="statusProcess" Type="Int16" />
+          <Property Name="statusMDFe" Type="Int16" />
+          <Property Name="origemManifesto" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="destinoManifesto" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="numVoo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dataVoo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="txtDate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="serie" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="counterid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="processHHMM" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="authorizationDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbmdfedetalhes" Relationship="Self.FK_tbmdfedetalhe_tbmdfe" FromRole="tbmdfe" ToRole="tbmdfedetalhe" />
+          <NavigationProperty Name="tbmdfedocument" Relationship="Self.FK_tbmdfedocument_tbmdfe" FromRole="tbmdfe" ToRole="tbmdfedocument" />
+          <NavigationProperty Name="tbmdfeprocess" Relationship="Self.FK_tbmdfeprocess_tbcte" FromRole="tbmdfe" ToRole="tbmdfeprocess" />
+          <NavigationProperty Name="tbmdfeRetorno" Relationship="Self.FK_tbmdfeRetorno_tbmdfe" FromRole="tbmdfe" ToRole="tbmdfeRetorno" />
+        </EntityType>
+        <EntityType Name="tbmdfecancel">
+          <Key>
+            <PropertyRef Name="idtbmdfe" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idtbmdfe" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbMigrationFile1">
+          <Key>
+            <PropertyRef Name="AWB_ID" />
+          </Key>
+          <Property Name="ODN" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="AWB_ID" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AirlineCode" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Issuance" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="MAWB_Number" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Origin_Station" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Destination_Station" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Payment_Method" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Product_Code" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="UTC_Creation" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Local_Creation" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Currency_Code" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Freight_Amount" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Fare_Amount" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Fare_Type" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Declared_Amount" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Insurance_Number" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Insurance" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Observation" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="CFOPNumber" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="User_Code_Creation" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbMigrationFile8" Relationship="Self.FK__tbMigrati__AWB_I__05F8DC4F" FromRole="tbMigrationFile1" ToRole="tbMigrationFile8" />
+        </EntityType>
+        <EntityType Name="tbMigrationFile8">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="OND" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="AWB_ID" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="ChaveCte" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbMigrationFile1" Relationship="Self.FK__tbMigrati__AWB_I__05F8DC4F" FromRole="tbMigrationFile8" ToRole="tbMigrationFile1" />
+        </EntityType>
+        <EntityType Name="tbMigrationTeste">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ODN" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="AWB_ID" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="AirlineCode" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Issuance" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="MAWB_Number" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Origin_Station" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Destination_Station" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Payment_Method" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Product_Code" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="UTC_Creation" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Local_Creation" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Currency_Code" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Freight_Amount" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Fare_Amount" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Fare_Type" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Declared_Amount" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Insurance_Number" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Insurance" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Observation" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="CFOPNumber" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="User_Code_Creation" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbMunicipio">
+          <Key>
+            <PropertyRef Name="idMun" />
+          </Key>
+          <Property Name="idMun" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cdUF" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="cdMun" Type="Int32" Nullable="false" />
+          <Property Name="descMun" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbUsuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usuario" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="senha" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="nomeUsuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dominio" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="dtCreate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="dtIniVigencia" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dtfimVigencia" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dtUpdate" Type="DateTime" Precision="3" />
+          <Property Name="userUpdate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="userCreate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbcteCargaEspecial">
+          <Key>
+            <PropertyRef Name="cdCargaEspecial" />
+          </Key>
+          <Property Name="cdCargaEspecial" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbcteemail">
+          <Key>
+            <PropertyRef Name="CPFCNPJ" />
+            <PropertyRef Name="EMAIL" />
+            <PropertyRef Name="Id_Email" />
+          </Key>
+          <Property Name="CPFCNPJ" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="updateDate" Type="DateTime" Precision="3" />
+          <Property Name="Id_Email" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userUpdate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="userCreate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbCTeEventoDocument">
+          <Key>
+            <PropertyRef Name="idCTeEvento" />
+          </Key>
+          <Property Name="idCTeEvento" Type="Int64" Nullable="false" />
+          <Property Name="documentCabec" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="documentCTeOriginal" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="documentData" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="documentEvento" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="interfaceSendingDate" Type="DateTime" Precision="3" />
+          <Property Name="MASTERSAFSENDINGDATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbCTeEvento" Relationship="Self.FK__tbCTeEven__idCTe__5A846E65" FromRole="tbCTeEventoDocument" ToRole="tbCTeEvento" />
+        </EntityType>
+        <EntityType Name="tbCTeEventoProcess">
+          <Key>
+            <PropertyRef Name="idCTeEvento" />
+          </Key>
+          <Property Name="idCTeEvento" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="tbCTeEvento" Relationship="Self.FK_tbCTeEventoProcess_tbCTeEvento" FromRole="tbCTeEventoProcess" ToRole="tbCTeEvento" />
+        </EntityType>
+        <EntityType Name="tbCTeEventoRetorno">
+          <Key>
+            <PropertyRef Name="idCTeEvento" />
+          </Key>
+          <Property Name="idCTeEvento" Type="Int64" Nullable="false" />
+          <Property Name="documentRetCTeEvento" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="statusCTe" Type="Int64" />
+          <Property Name="XMLRETORNODate" Type="Int64" />
+          <Property Name="XMLRETORNOHHMM" Type="Int64" />
+          <Property Name="processDate" Type="Int64" />
+          <Property Name="processHHMM" Type="Int64" />
+          <NavigationProperty Name="tbCTeEvento" Relationship="Self.FK_tbCTeEventoRetorno" FromRole="tbCTeEventoRetorno" ToRole="tbCTeEvento" />
+        </EntityType>
+        <EntityType Name="tbcteLog">
+          <Key>
+            <PropertyRef Name="idCte" />
+            <PropertyRef Name="evento" />
+            <PropertyRef Name="dataEvento" />
+            <PropertyRef Name="horaEvento" />
+          </Key>
+          <Property Name="idCte" Type="Int64" Nullable="false" />
+          <Property Name="evento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dataEvento" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="horaEvento" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipoMsg" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="msg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbcteprocess">
+          <Key>
+            <PropertyRef Name="idcte" />
+          </Key>
+          <Property Name="idcte" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="tbcte" Relationship="Self.FK_tbcteprocess_tbcte" FromRole="tbcteprocess" ToRole="tbcte" />
+        </EntityType>
+        <EntityType Name="tbctereceptionhistory">
+          <Key>
+            <PropertyRef Name="idReception" />
+            <PropertyRef Name="clientId" />
+            <PropertyRef Name="tipo" />
+            <PropertyRef Name="processDate" />
+            <PropertyRef Name="processHHMM" />
+          </Key>
+          <Property Name="idReception" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clientId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ref" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="awb" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="serie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="counterid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="headerData" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="documentData" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="processDate" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="processHHMM" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbcteRetorno">
+          <Key>
+            <PropertyRef Name="idcte" />
+          </Key>
+          <Property Name="idcte" Type="Int64" Nullable="false" />
+          <Property Name="documentRetCTE" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="statusCTe" Type="Int64" />
+          <Property Name="XMLRETORNODate" Type="Int64" />
+          <Property Name="XMLRETORNOHHMM" Type="Int64" />
+          <Property Name="processDate" Type="Int64" />
+          <Property Name="processHHMM" Type="Int64" />
+          <NavigationProperty Name="tbcte" Relationship="Self.FK_tbcteRetorno_tbcte" FromRole="tbcteRetorno" ToRole="tbcte" />
+        </EntityType>
+        <EntityType Name="tbcteRetornoInut">
+          <Key>
+            <PropertyRef Name="idcte" />
+          </Key>
+          <Property Name="idcte" Type="Int64" Nullable="false" />
+          <Property Name="documentRetCTE" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="statusCTe" Type="Int64" />
+          <Property Name="XMLRETORNODate" Type="Int64" />
+          <Property Name="XMLRETORNOHHMM" Type="Int64" />
+          <Property Name="processDate" Type="Int64" />
+          <Property Name="processHHMM" Type="Int64" />
+          <NavigationProperty Name="tbcteinut" Relationship="Self.FK_tbcteRetornoInut_tbcte" FromRole="tbcteRetornoInut" ToRole="tbcteinut" />
+        </EntityType>
+        <EntityType Name="tbEstado">
+          <Key>
+            <PropertyRef Name="cdUF" />
+            <PropertyRef Name="estado" />
+            <PropertyRef Name="UF" />
+          </Key>
+          <Property Name="cdUF" Type="Int16" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UF" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbmdfeColdFile">
+          <Key>
+            <PropertyRef Name="origemManifesto" />
+            <PropertyRef Name="destinoManifesto" />
+            <PropertyRef Name="numVoo" />
+            <PropertyRef Name="dataVoo" />
+            <PropertyRef Name="processDate" />
+            <PropertyRef Name="processHHMM" />
+          </Key>
+          <Property Name="origemManifesto" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="destinoManifesto" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="numVoo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dataVoo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="documentData" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="processDate" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="processHHMM" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="serie" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="counterId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="qtdeReq" Type="Int16" />
+        </EntityType>
+        <EntityType Name="tbmdfedamdfe">
+          <Key>
+            <PropertyRef Name="idmdfe" />
+          </Key>
+          <Property Name="xml" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="idmdfe" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbmdfedetalhe">
+          <Key>
+            <PropertyRef Name="origemManifesto" />
+            <PropertyRef Name="destinoManifesto" />
+            <PropertyRef Name="numVoo" />
+            <PropertyRef Name="dataVoo" />
+            <PropertyRef Name="idmdfe" />
+          </Key>
+          <Property Name="erpCode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="chaveCTe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="serie" Type="Int16" />
+          <Property Name="counterid" Type="Int64" />
+          <Property Name="origemManifesto" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="destinoManifesto" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="numVoo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dataVoo" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idmdfe" Type="Int64" Nullable="false" />
+          <Property Name="valorTotalAWB" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="peso" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="pecas" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="pecasAWB" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="tbmdfe" Relationship="Self.FK_tbmdfedetalhe_tbmdfe" FromRole="tbmdfedetalhe" ToRole="tbmdfe" />
+        </EntityType>
+        <EntityType Name="tbmdfedocument">
+          <Key>
+            <PropertyRef Name="idmdfe" />
+          </Key>
+          <Property Name="idmdfe" Type="Int64" Nullable="false" />
+          <Property Name="documentData" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="documentMDFE" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="documentMDFECanc" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="documentMDFEEncer" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="sendingDate" Type="DateTime" Precision="3" />
+          <Property Name="interfaceSendingDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbmdfe" Relationship="Self.FK_tbmdfedocument_tbmdfe" FromRole="tbmdfedocument" ToRole="tbmdfe" />
+        </EntityType>
+        <EntityType Name="tbmdfeprintrequest">
+          <Key>
+            <PropertyRef Name="numVoo" />
+            <PropertyRef Name="dataVoo" />
+            <PropertyRef Name="processDate" />
+            <PropertyRef Name="processHHMM" />
+          </Key>
+          <Property Name="serie" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="counterid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="numVoo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dataVoo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="documentData" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="processDate" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="processHHMM" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbmdfeprocess">
+          <Key>
+            <PropertyRef Name="idmdfe" />
+          </Key>
+          <Property Name="idmdfe" Type="Int64" Nullable="false" />
+          <Property Name="idActionType" Type="Int32" />
+          <NavigationProperty Name="tbmdfe" Relationship="Self.FK_tbmdfeprocess_tbcte" FromRole="tbmdfeprocess" ToRole="tbmdfe" />
+        </EntityType>
+        <EntityType Name="tbmdfereceptionhistory">
+          <Key>
+            <PropertyRef Name="origemManifesto" />
+            <PropertyRef Name="destinoManifesto" />
+            <PropertyRef Name="numVoo" />
+            <PropertyRef Name="dataVoo" />
+            <PropertyRef Name="processDate" />
+            <PropertyRef Name="processHHMM" />
+          </Key>
+          <Property Name="origemManifesto" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="destinoManifesto" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="numVoo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dataVoo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="documentData" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="processDate" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="processHHMM" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="actionTag" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="serie" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="counterId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int16" />
+          <Property Name="statusDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbmdfereceptionhistoryBKP">
+          <Key>
+            <PropertyRef Name="origemManifesto" />
+            <PropertyRef Name="destinoManifesto" />
+            <PropertyRef Name="numVoo" />
+            <PropertyRef Name="dataVoo" />
+            <PropertyRef Name="processDate" />
+            <PropertyRef Name="processHHMM" />
+          </Key>
+          <Property Name="origemManifesto" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="destinoManifesto" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="numVoo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dataVoo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="documentData" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="processDate" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="processHHMM" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbmdfeRetorno">
+          <Key>
+            <PropertyRef Name="idmdfe" />
+          </Key>
+          <Property Name="idmdfe" Type="Int64" Nullable="false" />
+          <Property Name="documentRetMDFE" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="processDate" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="processHHMM" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="statusMDFe" Type="Int16" />
+          <Property Name="xmlRetornoDate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="xmlRetornoHHMM" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbmdfe" Relationship="Self.FK_tbmdfeRetorno_tbmdfe" FromRole="tbmdfeRetorno" ToRole="tbmdfe" />
+        </EntityType>
+        <Association Name="FK_tbctedocument_tbcte">
+          <End Role="tbcte" Type="Self.tbcte" Multiplicity="1" />
+          <End Role="tbctedocument" Type="Self.tbctedocument" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbcte">
+              <PropertyRef Name="idcte" />
+            </Principal>
+            <Dependent Role="tbctedocument">
+              <PropertyRef Name="idcte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbcteprocess_tbcte">
+          <End Role="tbcte" Type="Self.tbcte" Multiplicity="1" />
+          <End Role="tbcteprocess" Type="Self.tbcteprocess" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbcte">
+              <PropertyRef Name="idcte" />
+            </Principal>
+            <Dependent Role="tbcteprocess">
+              <PropertyRef Name="idcte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbcteRetorno_tbcte">
+          <End Role="tbcte" Type="Self.tbcte" Multiplicity="1" />
+          <End Role="tbcteRetorno" Type="Self.tbcteRetorno" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbcte">
+              <PropertyRef Name="idcte" />
+            </Principal>
+            <Dependent Role="tbcteRetorno">
+              <PropertyRef Name="idcte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbCTeEven__idCTe__5A846E65">
+          <End Role="tbCTeEvento" Type="Self.tbCTeEvento" Multiplicity="1" />
+          <End Role="tbCTeEventoDocument" Type="Self.tbCTeEventoDocument" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbCTeEvento">
+              <PropertyRef Name="idCTeEvento" />
+            </Principal>
+            <Dependent Role="tbCTeEventoDocument">
+              <PropertyRef Name="idCTeEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbCTeEventoProcess_tbCTeEvento">
+          <End Role="tbCTeEvento" Type="Self.tbCTeEvento" Multiplicity="1" />
+          <End Role="tbCTeEventoProcess" Type="Self.tbCTeEventoProcess" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbCTeEvento">
+              <PropertyRef Name="idCTeEvento" />
+            </Principal>
+            <Dependent Role="tbCTeEventoProcess">
+              <PropertyRef Name="idCTeEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbCTeEventoRetorno">
+          <End Role="tbCTeEvento" Type="Self.tbCTeEvento" Multiplicity="1" />
+          <End Role="tbCTeEventoRetorno" Type="Self.tbCTeEventoRetorno" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbCTeEvento">
+              <PropertyRef Name="idCTeEvento" />
+            </Principal>
+            <Dependent Role="tbCTeEventoRetorno">
+              <PropertyRef Name="idCTeEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbcteRetornoInut_tbcte">
+          <End Role="tbcteinut" Type="Self.tbcteinut" Multiplicity="1" />
+          <End Role="tbcteRetornoInut" Type="Self.tbcteRetornoInut" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbcteinut">
+              <PropertyRef Name="idcte" />
+            </Principal>
+            <Dependent Role="tbcteRetornoInut">
+              <PropertyRef Name="idcte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbmdfedetalhe_tbmdfe">
+          <End Role="tbmdfe" Type="Self.tbmdfe" Multiplicity="1" />
+          <End Role="tbmdfedetalhe" Type="Self.tbmdfedetalhe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbmdfe">
+              <PropertyRef Name="idMdfe" />
+            </Principal>
+            <Dependent Role="tbmdfedetalhe">
+              <PropertyRef Name="idmdfe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbmdfedocument_tbmdfe">
+          <End Role="tbmdfe" Type="Self.tbmdfe" Multiplicity="1" />
+          <End Role="tbmdfedocument" Type="Self.tbmdfedocument" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbmdfe">
+              <PropertyRef Name="idMdfe" />
+            </Principal>
+            <Dependent Role="tbmdfedocument">
+              <PropertyRef Name="idmdfe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbmdfeprocess_tbcte">
+          <End Role="tbmdfe" Type="Self.tbmdfe" Multiplicity="1" />
+          <End Role="tbmdfeprocess" Type="Self.tbmdfeprocess" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbmdfe">
+              <PropertyRef Name="idMdfe" />
+            </Principal>
+            <Dependent Role="tbmdfeprocess">
+              <PropertyRef Name="idmdfe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbmdfeRetorno_tbmdfe">
+          <End Role="tbmdfe" Type="Self.tbmdfe" Multiplicity="1" />
+          <End Role="tbmdfeRetorno" Type="Self.tbmdfeRetorno" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbmdfe">
+              <PropertyRef Name="idMdfe" />
+            </Principal>
+            <Dependent Role="tbmdfeRetorno">
+              <PropertyRef Name="idmdfe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbMigrati__AWB_I__05F8DC4F">
+          <End Role="tbMigrationFile1" Type="Self.tbMigrationFile1" Multiplicity="0..1" />
+          <End Role="tbMigrationFile8" Type="Self.tbMigrationFile8" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMigrationFile1">
+              <PropertyRef Name="AWB_ID" />
+            </Principal>
+            <Dependent Role="tbMigrationFile8">
+              <PropertyRef Name="AWB_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CTEGOLEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbctes" EntityType="Self.tbcte" />
+          <EntitySet Name="tbctecancels" EntityType="Self.tbctecancel" />
+          <EntitySet Name="tbctedocuments" EntityType="Self.tbctedocument" />
+          <EntitySet Name="tbCTeEventoes" EntityType="Self.tbCTeEvento" />
+          <EntitySet Name="tbcteinuts" EntityType="Self.tbcteinut" />
+          <EntitySet Name="tbcterefs" EntityType="Self.tbcteref" />
+          <EntitySet Name="tbDefinitions" EntityType="Self.tbDefinition" />
+          <EntitySet Name="tbLogs" EntityType="Self.tbLog" />
+          <EntitySet Name="tbmdfes" EntityType="Self.tbmdfe" />
+          <EntitySet Name="tbmdfecancels" EntityType="Self.tbmdfecancel" />
+          <EntitySet Name="tbMigrationFile1" EntityType="Self.tbMigrationFile1" />
+          <EntitySet Name="tbMigrationFile8" EntityType="Self.tbMigrationFile8" />
+          <EntitySet Name="tbMigrationTestes" EntityType="Self.tbMigrationTeste" />
+          <EntitySet Name="tbMunicipios" EntityType="Self.tbMunicipio" />
+          <EntitySet Name="tbUsuarios" EntityType="Self.tbUsuario" />
+          <EntitySet Name="tbcteCargaEspecials" EntityType="Self.tbcteCargaEspecial" />
+          <EntitySet Name="tbcteemails" EntityType="Self.tbcteemail" />
+          <EntitySet Name="tbCTeEventoDocuments" EntityType="Self.tbCTeEventoDocument" />
+          <EntitySet Name="tbCTeEventoProcesses" EntityType="Self.tbCTeEventoProcess" />
+          <EntitySet Name="tbCTeEventoRetornoes" EntityType="Self.tbCTeEventoRetorno" />
+          <EntitySet Name="tbcteLogs" EntityType="Self.tbcteLog" />
+          <EntitySet Name="tbcteprocesses" EntityType="Self.tbcteprocess" />
+          <EntitySet Name="tbctereceptionhistories" EntityType="Self.tbctereceptionhistory" />
+          <EntitySet Name="tbcteRetornoes" EntityType="Self.tbcteRetorno" />
+          <EntitySet Name="tbcteRetornoInuts" EntityType="Self.tbcteRetornoInut" />
+          <EntitySet Name="tbEstadoes" EntityType="Self.tbEstado" />
+          <EntitySet Name="tbmdfeColdFiles" EntityType="Self.tbmdfeColdFile" />
+          <EntitySet Name="tbmdfedamdfes" EntityType="Self.tbmdfedamdfe" />
+          <EntitySet Name="tbmdfedetalhes" EntityType="Self.tbmdfedetalhe" />
+          <EntitySet Name="tbmdfedocuments" EntityType="Self.tbmdfedocument" />
+          <EntitySet Name="tbmdfeprintrequests" EntityType="Self.tbmdfeprintrequest" />
+          <EntitySet Name="tbmdfeprocesses" EntityType="Self.tbmdfeprocess" />
+          <EntitySet Name="tbmdfereceptionhistories" EntityType="Self.tbmdfereceptionhistory" />
+          <EntitySet Name="tbmdfereceptionhistoryBKPs" EntityType="Self.tbmdfereceptionhistoryBKP" />
+          <EntitySet Name="tbmdfeRetornoes" EntityType="Self.tbmdfeRetorno" />
+          <AssociationSet Name="FK_tbctedocument_tbcte" Association="Self.FK_tbctedocument_tbcte">
+            <End Role="tbcte" EntitySet="tbctes" />
+            <End Role="tbctedocument" EntitySet="tbctedocuments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbcteprocess_tbcte" Association="Self.FK_tbcteprocess_tbcte">
+            <End Role="tbcte" EntitySet="tbctes" />
+            <End Role="tbcteprocess" EntitySet="tbcteprocesses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbcteRetorno_tbcte" Association="Self.FK_tbcteRetorno_tbcte">
+            <End Role="tbcte" EntitySet="tbctes" />
+            <End Role="tbcteRetorno" EntitySet="tbcteRetornoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbCTeEven__idCTe__5A846E65" Association="Self.FK__tbCTeEven__idCTe__5A846E65">
+            <End Role="tbCTeEvento" EntitySet="tbCTeEventoes" />
+            <End Role="tbCTeEventoDocument" EntitySet="tbCTeEventoDocuments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbCTeEventoProcess_tbCTeEvento" Association="Self.FK_tbCTeEventoProcess_tbCTeEvento">
+            <End Role="tbCTeEvento" EntitySet="tbCTeEventoes" />
+            <End Role="tbCTeEventoProcess" EntitySet="tbCTeEventoProcesses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbCTeEventoRetorno" Association="Self.FK_tbCTeEventoRetorno">
+            <End Role="tbCTeEvento" EntitySet="tbCTeEventoes" />
+            <End Role="tbCTeEventoRetorno" EntitySet="tbCTeEventoRetornoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbcteRetornoInut_tbcte" Association="Self.FK_tbcteRetornoInut_tbcte">
+            <End Role="tbcteinut" EntitySet="tbcteinuts" />
+            <End Role="tbcteRetornoInut" EntitySet="tbcteRetornoInuts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbmdfedetalhe_tbmdfe" Association="Self.FK_tbmdfedetalhe_tbmdfe">
+            <End Role="tbmdfe" EntitySet="tbmdfes" />
+            <End Role="tbmdfedetalhe" EntitySet="tbmdfedetalhes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbmdfedocument_tbmdfe" Association="Self.FK_tbmdfedocument_tbmdfe">
+            <End Role="tbmdfe" EntitySet="tbmdfes" />
+            <End Role="tbmdfedocument" EntitySet="tbmdfedocuments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbmdfeprocess_tbcte" Association="Self.FK_tbmdfeprocess_tbcte">
+            <End Role="tbmdfe" EntitySet="tbmdfes" />
+            <End Role="tbmdfeprocess" EntitySet="tbmdfeprocesses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbmdfeRetorno_tbmdfe" Association="Self.FK_tbmdfeRetorno_tbmdfe">
+            <End Role="tbmdfe" EntitySet="tbmdfes" />
+            <End Role="tbmdfeRetorno" EntitySet="tbmdfeRetornoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbMigrati__AWB_I__05F8DC4F" Association="Self.FK__tbMigrati__AWB_I__05F8DC4F">
+            <End Role="tbMigrationFile1" EntitySet="tbMigrationFile1" />
+            <End Role="tbMigrationFile8" EntitySet="tbMigrationFile8" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CTEGOLModelStoreContainer" CdmEntityContainer="CTEGOLEntities2">
+          <EntitySetMapping Name="tbctes">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbcte">
+              <MappingFragment StoreEntitySet="tbcte">
+                <ScalarProperty Name="idcte" ColumnName="idcte" />
+                <ScalarProperty Name="clientId" ColumnName="clientId" />
+                <ScalarProperty Name="erpCode" ColumnName="erpCode" />
+                <ScalarProperty Name="serie" ColumnName="serie" />
+                <ScalarProperty Name="counterid" ColumnName="counterid" />
+                <ScalarProperty Name="eKey" ColumnName="eKey" />
+                <ScalarProperty Name="protocolNumber" ColumnName="protocolNumber" />
+                <ScalarProperty Name="processDate" ColumnName="processDate" />
+                <ScalarProperty Name="processMessage" ColumnName="processMessage" />
+                <ScalarProperty Name="statusProcess" ColumnName="statusProcess" />
+                <ScalarProperty Name="statusCTe" ColumnName="statusCTe" />
+                <ScalarProperty Name="inContingency" ColumnName="inContingency" />
+                <ScalarProperty Name="isCompress" ColumnName="isCompress" />
+                <ScalarProperty Name="station" ColumnName="station" />
+                <ScalarProperty Name="authorizationDate" ColumnName="authorizationDate" />
+                <ScalarProperty Name="cancelDate" ColumnName="cancelDate" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="CNPJ" ColumnName="CNPJ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbctecancels">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbctecancel">
+              <MappingFragment StoreEntitySet="tbctecancel">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idtbcte" ColumnName="idtbcte" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbctedocuments">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbctedocument">
+              <MappingFragment StoreEntitySet="tbctedocument">
+                <ScalarProperty Name="idcte" ColumnName="idcte" />
+                <ScalarProperty Name="additionalData" ColumnName="additionalData" />
+                <ScalarProperty Name="documentData" ColumnName="documentData" />
+                <ScalarProperty Name="documentCTe" ColumnName="documentCTe" />
+                <ScalarProperty Name="interfaceSendingDate" ColumnName="interfaceSendingDate" />
+                <ScalarProperty Name="documentCTeCanc" ColumnName="documentCTeCanc" />
+                <ScalarProperty Name="mastersafSendingDate" ColumnName="mastersafSendingDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbCTeEventoes">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbCTeEvento">
+              <MappingFragment StoreEntitySet="tbCTeEvento">
+                <ScalarProperty Name="idCTeEvento" ColumnName="idCTeEvento" />
+                <ScalarProperty Name="clientId" ColumnName="clientId" />
+                <ScalarProperty Name="erpCode" ColumnName="erpCode" />
+                <ScalarProperty Name="serie" ColumnName="serie" />
+                <ScalarProperty Name="counterId" ColumnName="counterId" />
+                <ScalarProperty Name="eKey" ColumnName="eKey" />
+                <ScalarProperty Name="protocolNumber" ColumnName="protocolNumber" />
+                <ScalarProperty Name="processDate" ColumnName="processDate" />
+                <ScalarProperty Name="processMessage" ColumnName="processMessage" />
+                <ScalarProperty Name="statusProcess" ColumnName="statusProcess" />
+                <ScalarProperty Name="statusCTe" ColumnName="statusCTe" />
+                <ScalarProperty Name="station" ColumnName="station" />
+                <ScalarProperty Name="cnpj" ColumnName="cnpj" />
+                <ScalarProperty Name="qtdeEvento" ColumnName="qtdeEvento" />
+                <ScalarProperty Name="tipoEvento" ColumnName="tipoEvento" />
+                <ScalarProperty Name="eKeyEvento" ColumnName="eKeyEvento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbcteinuts">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbcteinut">
+              <MappingFragment StoreEntitySet="tbcteinut">
+                <ScalarProperty Name="idcte" ColumnName="idcte" />
+                <ScalarProperty Name="cnpjEmissor" ColumnName="cnpjEmissor" />
+                <ScalarProperty Name="clientId" ColumnName="clientId" />
+                <ScalarProperty Name="erpCode" ColumnName="erpCode" />
+                <ScalarProperty Name="serie" ColumnName="serie" />
+                <ScalarProperty Name="counterid" ColumnName="counterid" />
+                <ScalarProperty Name="protocolNumber" ColumnName="protocolNumber" />
+                <ScalarProperty Name="processDate" ColumnName="processDate" />
+                <ScalarProperty Name="processMessage" ColumnName="processMessage" />
+                <ScalarProperty Name="statusProcess" ColumnName="statusProcess" />
+                <ScalarProperty Name="statusCTe" ColumnName="statusCTe" />
+                <ScalarProperty Name="xmlInut" ColumnName="xmlInut" />
+                <ScalarProperty Name="station" ColumnName="station" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbcterefs">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbcteref">
+              <MappingFragment StoreEntitySet="tbcteref">
+                <ScalarProperty Name="idcte" ColumnName="idcte" />
+                <ScalarProperty Name="clientId" ColumnName="clientId" />
+                <ScalarProperty Name="erpCode" ColumnName="erpCode" />
+                <ScalarProperty Name="serie" ColumnName="serie" />
+                <ScalarProperty Name="counterid" ColumnName="counterid" />
+                <ScalarProperty Name="eKey" ColumnName="eKey" />
+                <ScalarProperty Name="protocolNumber" ColumnName="protocolNumber" />
+                <ScalarProperty Name="processDate" ColumnName="processDate" />
+                <ScalarProperty Name="processMessage" ColumnName="processMessage" />
+                <ScalarProperty Name="statusProcess" ColumnName="statusProcess" />
+                <ScalarProperty Name="statusCTe" ColumnName="statusCTe" />
+                <ScalarProperty Name="inContingency" ColumnName="inContingency" />
+                <ScalarProperty Name="isCompress" ColumnName="isCompress" />
+                <ScalarProperty Name="additionalData" ColumnName="additionalData" />
+                <ScalarProperty Name="station" ColumnName="station" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="refId" ColumnName="refId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbDefinitions">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbDefinition">
+              <MappingFragment StoreEntitySet="tbDefinitions">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="station" ColumnName="station" />
+                <ScalarProperty Name="CNPJ" ColumnName="CNPJ" />
+                <ScalarProperty Name="IE" ColumnName="IE" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="fantasyName" ColumnName="fantasyName" />
+                <ScalarProperty Name="series" ColumnName="series" />
+                <ScalarProperty Name="addrName" ColumnName="addrName" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="complement" ColumnName="complement" />
+                <ScalarProperty Name="postcode" ColumnName="postcode" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="UF" ColumnName="UF" />
+                <ScalarProperty Name="flagEnviaIENaoContrib" ColumnName="flagEnviaIENaoContrib" />
+                <ScalarProperty Name="tpImp" ColumnName="tpImp" />
+                <ScalarProperty Name="tpAmb" ColumnName="tpAmb" />
+                <ScalarProperty Name="versionCTe" ColumnName="versionCTe" />
+                <ScalarProperty Name="versionMDFe" ColumnName="versionMDFe" />
+                <ScalarProperty Name="procEmiCTe" ColumnName="procEmiCTe" />
+                <ScalarProperty Name="procEmiMDFe" ColumnName="procEmiMDFe" />
+                <ScalarProperty Name="procVersionCTe" ColumnName="procVersionCTe" />
+                <ScalarProperty Name="procVersionMDFe" ColumnName="procVersionMDFe" />
+                <ScalarProperty Name="modalCTe" ColumnName="modalCTe" />
+                <ScalarProperty Name="modalMDFe" ColumnName="modalMDFe" />
+                <ScalarProperty Name="modCTe" ColumnName="modCTe" />
+                <ScalarProperty Name="modMDFe" ColumnName="modMDFe" />
+                <ScalarProperty Name="directoryCTe" ColumnName="directoryCTe" />
+                <ScalarProperty Name="directoryMDFe" ColumnName="directoryMDFe" />
+                <ScalarProperty Name="cancelMessageCTe" ColumnName="cancelMessageCTe" />
+                <ScalarProperty Name="cancelMessageMDFe" ColumnName="cancelMessageMDFe" />
+                <ScalarProperty Name="inutMessageCTe" ColumnName="inutMessageCTe" />
+                <ScalarProperty Name="tpEmitMDFe" ColumnName="tpEmitMDFe" />
+                <ScalarProperty Name="cUnidMDFe" ColumnName="cUnidMDFe" />
+                <ScalarProperty Name="usuarioCriacao" ColumnName="usuarioCriacao" />
+                <ScalarProperty Name="dataCriacao" ColumnName="dataCriacao" />
+                <ScalarProperty Name="usuarioAtualizacao" ColumnName="usuarioAtualizacao" />
+                <ScalarProperty Name="dataAtualizacao" ColumnName="dataAtualizacao" />
+                <ScalarProperty Name="dataVigenciaIni" ColumnName="dataVigenciaIni" />
+                <ScalarProperty Name="dataVigenciaFim" ColumnName="dataVigenciaFim" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="descComboBox" ColumnName="descComboBox" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbLogs">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbLog">
+              <MappingFragment StoreEntitySet="tbLog">
+                <ScalarProperty Name="idLog" ColumnName="idLog" />
+                <ScalarProperty Name="tpDoc" ColumnName="tpDoc" />
+                <ScalarProperty Name="tpLog" ColumnName="tpLog" />
+                <ScalarProperty Name="processMessage" ColumnName="processMessage" />
+                <ScalarProperty Name="processDate" ColumnName="processDate" />
+                <ScalarProperty Name="processTime" ColumnName="processTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbmdfes">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbmdfe">
+              <MappingFragment StoreEntitySet="tbmdfe">
+                <ScalarProperty Name="idMdfe" ColumnName="idMdfe" />
+                <ScalarProperty Name="chaveMDFe" ColumnName="chaveMDFe" />
+                <ScalarProperty Name="protocolNumber" ColumnName="protocolNumber" />
+                <ScalarProperty Name="processDate" ColumnName="processDate" />
+                <ScalarProperty Name="processMessage" ColumnName="processMessage" />
+                <ScalarProperty Name="statusProcess" ColumnName="statusProcess" />
+                <ScalarProperty Name="statusMDFe" ColumnName="statusMDFe" />
+                <ScalarProperty Name="origemManifesto" ColumnName="origemManifesto" />
+                <ScalarProperty Name="destinoManifesto" ColumnName="destinoManifesto" />
+                <ScalarProperty Name="numVoo" ColumnName="numVoo" />
+                <ScalarProperty Name="dataVoo" ColumnName="dataVoo" />
+                <ScalarProperty Name="txtDate" ColumnName="txtDate" />
+                <ScalarProperty Name="serie" ColumnName="serie" />
+                <ScalarProperty Name="counterid" ColumnName="counterid" />
+                <ScalarProperty Name="processHHMM" ColumnName="processHHMM" />
+                <ScalarProperty Name="authorizationDate" ColumnName="authorizationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbmdfecancels">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbmdfecancel">
+              <MappingFragment StoreEntitySet="tbmdfecancel">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idtbmdfe" ColumnName="idtbmdfe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbMigrationFile1">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbMigrationFile1">
+              <MappingFragment StoreEntitySet="tbMigrationFile1">
+                <ScalarProperty Name="ODN" ColumnName="ODN" />
+                <ScalarProperty Name="AWB_ID" ColumnName="AWB_ID" />
+                <ScalarProperty Name="AirlineCode" ColumnName="AirlineCode" />
+                <ScalarProperty Name="Issuance" ColumnName="Issuance" />
+                <ScalarProperty Name="MAWB_Number" ColumnName="MAWB_Number" />
+                <ScalarProperty Name="Origin_Station" ColumnName="Origin_Station" />
+                <ScalarProperty Name="Destination_Station" ColumnName="Destination_Station" />
+                <ScalarProperty Name="Payment_Method" ColumnName="Payment_Method" />
+                <ScalarProperty Name="Product_Code" ColumnName="Product_Code" />
+                <ScalarProperty Name="UTC_Creation" ColumnName="UTC_Creation" />
+                <ScalarProperty Name="Local_Creation" ColumnName="Local_Creation" />
+                <ScalarProperty Name="Currency_Code" ColumnName="Currency_Code" />
+                <ScalarProperty Name="Freight_Amount" ColumnName="Freight_Amount" />
+                <ScalarProperty Name="Fare_Amount" ColumnName="Fare_Amount" />
+                <ScalarProperty Name="Fare_Type" ColumnName="Fare_Type" />
+                <ScalarProperty Name="Declared_Amount" ColumnName="Declared_Amount" />
+                <ScalarProperty Name="Insurance_Number" ColumnName="Insurance_Number" />
+                <ScalarProperty Name="Insurance" ColumnName="Insurance" />
+                <ScalarProperty Name="Observation" ColumnName="Observation" />
+                <ScalarProperty Name="CFOPNumber" ColumnName="CFOPNumber" />
+                <ScalarProperty Name="User_Code_Creation" ColumnName="User_Code_Creation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbMigrationFile8">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbMigrationFile8">
+              <MappingFragment StoreEntitySet="tbMigrationFile8">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OND" ColumnName="OND" />
+                <ScalarProperty Name="AWB_ID" ColumnName="AWB_ID" />
+                <ScalarProperty Name="ChaveCte" ColumnName="ChaveCte" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbMigrationTestes">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbMigrationTeste">
+              <MappingFragment StoreEntitySet="tbMigrationTeste">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ODN" ColumnName="ODN" />
+                <ScalarProperty Name="AWB_ID" ColumnName="AWB_ID" />
+                <ScalarProperty Name="AirlineCode" ColumnName="AirlineCode" />
+                <ScalarProperty Name="Issuance" ColumnName="Issuance" />
+                <ScalarProperty Name="MAWB_Number" ColumnName="MAWB_Number" />
+                <ScalarProperty Name="Origin_Station" ColumnName="Origin_Station" />
+                <ScalarProperty Name="Destination_Station" ColumnName="Destination_Station" />
+                <ScalarProperty Name="Payment_Method" ColumnName="Payment_Method" />
+                <ScalarProperty Name="Product_Code" ColumnName="Product_Code" />
+                <ScalarProperty Name="UTC_Creation" ColumnName="UTC_Creation" />
+                <ScalarProperty Name="Local_Creation" ColumnName="Local_Creation" />
+                <ScalarProperty Name="Currency_Code" ColumnName="Currency_Code" />
+                <ScalarProperty Name="Freight_Amount" ColumnName="Freight_Amount" />
+                <ScalarProperty Name="Fare_Amount" ColumnName="Fare_Amount" />
+                <ScalarProperty Name="Fare_Type" ColumnName="Fare_Type" />
+                <ScalarProperty Name="Declared_Amount" ColumnName="Declared_Amount" />
+                <ScalarProperty Name="Insurance_Number" ColumnName="Insurance_Number" />
+                <ScalarProperty Name="Insurance" ColumnName="Insurance" />
+                <ScalarProperty Name="Observation" ColumnName="Observation" />
+                <ScalarProperty Name="CFOPNumber" ColumnName="CFOPNumber" />
+                <ScalarProperty Name="User_Code_Creation" ColumnName="User_Code_Creation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbMunicipios">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbMunicipio">
+              <MappingFragment StoreEntitySet="tbMunicipio">
+                <ScalarProperty Name="idMun" ColumnName="idMun" />
+                <ScalarProperty Name="cdUF" ColumnName="cdUF" />
+                <ScalarProperty Name="cdMun" ColumnName="cdMun" />
+                <ScalarProperty Name="descMun" ColumnName="descMun" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbUsuarios">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbUsuario">
+              <MappingFragment StoreEntitySet="tbUsuario">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="senha" ColumnName="senha" />
+                <ScalarProperty Name="nomeUsuario" ColumnName="nomeUsuario" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="dominio" ColumnName="dominio" />
+                <ScalarProperty Name="dtCreate" ColumnName="dtCreate" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="dtIniVigencia" ColumnName="dtIniVigencia" />
+                <ScalarProperty Name="dtfimVigencia" ColumnName="dtfimVigencia" />
+                <ScalarProperty Name="dtUpdate" ColumnName="dtUpdate" />
+                <ScalarProperty Name="userUpdate" ColumnName="userUpdate" />
+                <ScalarProperty Name="userCreate" ColumnName="userCreate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbcteCargaEspecials">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbcteCargaEspecial">
+              <MappingFragment StoreEntitySet="tbcteCargaEspecial">
+                <ScalarProperty Name="cdCargaEspecial" ColumnName="cdCargaEspecial" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbcteemails">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbcteemail">
+              <MappingFragment StoreEntitySet="tbcteemail">
+                <ScalarProperty Name="CPFCNPJ" ColumnName="CPFCNPJ" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+                <ScalarProperty Name="Id_Email" ColumnName="Id_Email" />
+                <ScalarProperty Name="userUpdate" ColumnName="userUpdate" />
+                <ScalarProperty Name="userCreate" ColumnName="userCreate" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbCTeEventoDocuments">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbCTeEventoDocument">
+              <MappingFragment StoreEntitySet="tbCTeEventoDocument">
+                <ScalarProperty Name="idCTeEvento" ColumnName="idCTeEvento" />
+                <ScalarProperty Name="documentCabec" ColumnName="documentCabec" />
+                <ScalarProperty Name="documentCTeOriginal" ColumnName="documentCTeOriginal" />
+                <ScalarProperty Name="documentData" ColumnName="documentData" />
+                <ScalarProperty Name="documentEvento" ColumnName="documentEvento" />
+                <ScalarProperty Name="interfaceSendingDate" ColumnName="interfaceSendingDate" />
+                <ScalarProperty Name="MASTERSAFSENDINGDATE" ColumnName="MASTERSAFSENDINGDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbCTeEventoProcesses">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbCTeEventoProcess">
+              <MappingFragment StoreEntitySet="tbCTeEventoProcess">
+                <ScalarProperty Name="idCTeEvento" ColumnName="idCTeEvento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbCTeEventoRetornoes">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbCTeEventoRetorno">
+              <MappingFragment StoreEntitySet="tbCTeEventoRetorno">
+                <ScalarProperty Name="idCTeEvento" ColumnName="idCTeEvento" />
+                <ScalarProperty Name="documentRetCTeEvento" ColumnName="documentRetCTeEvento" />
+                <ScalarProperty Name="statusCTe" ColumnName="statusCTe" />
+                <ScalarProperty Name="XMLRETORNODate" ColumnName="XMLRETORNODate" />
+                <ScalarProperty Name="XMLRETORNOHHMM" ColumnName="XMLRETORNOHHMM" />
+                <ScalarProperty Name="processDate" ColumnName="processDate" />
+                <ScalarProperty Name="processHHMM" ColumnName="processHHMM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbcteLogs">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbcteLog">
+              <MappingFragment StoreEntitySet="tbcteLog">
+                <ScalarProperty Name="idCte" ColumnName="idCte" />
+                <ScalarProperty Name="evento" ColumnName="evento" />
+                <ScalarProperty Name="dataEvento" ColumnName="dataEvento" />
+                <ScalarProperty Name="horaEvento" ColumnName="horaEvento" />
+                <ScalarProperty Name="tipoMsg" ColumnName="tipoMsg" />
+                <ScalarProperty Name="msg" ColumnName="msg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbcteprocesses">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbcteprocess">
+              <MappingFragment StoreEntitySet="tbcteprocess">
+                <ScalarProperty Name="idcte" ColumnName="idcte" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbctereceptionhistories">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbctereceptionhistory">
+              <MappingFragment StoreEntitySet="tbctereceptionhistory">
+                <ScalarProperty Name="idReception" ColumnName="idReception" />
+                <ScalarProperty Name="clientId" ColumnName="clientId" />
+                <ScalarProperty Name="ref" ColumnName="ref" />
+                <ScalarProperty Name="awb" ColumnName="awb" />
+                <ScalarProperty Name="serie" ColumnName="serie" />
+                <ScalarProperty Name="counterid" ColumnName="counterid" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="headerData" ColumnName="headerData" />
+                <ScalarProperty Name="documentData" ColumnName="documentData" />
+                <ScalarProperty Name="processDate" ColumnName="processDate" />
+                <ScalarProperty Name="processHHMM" ColumnName="processHHMM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbcteRetornoes">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbcteRetorno">
+              <MappingFragment StoreEntitySet="tbcteRetorno">
+                <ScalarProperty Name="idcte" ColumnName="idcte" />
+                <ScalarProperty Name="documentRetCTE" ColumnName="documentRetCTE" />
+                <ScalarProperty Name="statusCTe" ColumnName="statusCTe" />
+                <ScalarProperty Name="XMLRETORNODate" ColumnName="XMLRETORNODate" />
+                <ScalarProperty Name="XMLRETORNOHHMM" ColumnName="XMLRETORNOHHMM" />
+                <ScalarProperty Name="processDate" ColumnName="processDate" />
+                <ScalarProperty Name="processHHMM" ColumnName="processHHMM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbcteRetornoInuts">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbcteRetornoInut">
+              <MappingFragment StoreEntitySet="tbcteRetornoInut">
+                <ScalarProperty Name="idcte" ColumnName="idcte" />
+                <ScalarProperty Name="documentRetCTE" ColumnName="documentRetCTE" />
+                <ScalarProperty Name="statusCTe" ColumnName="statusCTe" />
+                <ScalarProperty Name="XMLRETORNODate" ColumnName="XMLRETORNODate" />
+                <ScalarProperty Name="XMLRETORNOHHMM" ColumnName="XMLRETORNOHHMM" />
+                <ScalarProperty Name="processDate" ColumnName="processDate" />
+                <ScalarProperty Name="processHHMM" ColumnName="processHHMM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbEstadoes">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbEstado">
+              <MappingFragment StoreEntitySet="tbEstado">
+                <ScalarProperty Name="cdUF" ColumnName="cdUF" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="UF" ColumnName="UF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbmdfeColdFiles">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbmdfeColdFile">
+              <MappingFragment StoreEntitySet="tbmdfeColdFiles">
+                <ScalarProperty Name="origemManifesto" ColumnName="origemManifesto" />
+                <ScalarProperty Name="destinoManifesto" ColumnName="destinoManifesto" />
+                <ScalarProperty Name="numVoo" ColumnName="numVoo" />
+                <ScalarProperty Name="dataVoo" ColumnName="dataVoo" />
+                <ScalarProperty Name="documentData" ColumnName="documentData" />
+                <ScalarProperty Name="processDate" ColumnName="processDate" />
+                <ScalarProperty Name="processHHMM" ColumnName="processHHMM" />
+                <ScalarProperty Name="serie" ColumnName="serie" />
+                <ScalarProperty Name="counterId" ColumnName="counterId" />
+                <ScalarProperty Name="qtdeReq" ColumnName="qtdeReq" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbmdfedamdfes">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbmdfedamdfe">
+              <MappingFragment StoreEntitySet="tbmdfedamdfe">
+                <ScalarProperty Name="xml" ColumnName="xml" />
+                <ScalarProperty Name="idmdfe" ColumnName="idmdfe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbmdfedetalhes">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbmdfedetalhe">
+              <MappingFragment StoreEntitySet="tbmdfedetalhe">
+                <ScalarProperty Name="erpCode" ColumnName="erpCode" />
+                <ScalarProperty Name="chaveCTe" ColumnName="chaveCTe" />
+                <ScalarProperty Name="serie" ColumnName="serie" />
+                <ScalarProperty Name="counterid" ColumnName="counterid" />
+                <ScalarProperty Name="origemManifesto" ColumnName="origemManifesto" />
+                <ScalarProperty Name="destinoManifesto" ColumnName="destinoManifesto" />
+                <ScalarProperty Name="numVoo" ColumnName="numVoo" />
+                <ScalarProperty Name="dataVoo" ColumnName="dataVoo" />
+                <ScalarProperty Name="idmdfe" ColumnName="idmdfe" />
+                <ScalarProperty Name="valorTotalAWB" ColumnName="valorTotalAWB" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="pecas" ColumnName="pecas" />
+                <ScalarProperty Name="pecasAWB" ColumnName="pecasAWB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbmdfedocuments">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbmdfedocument">
+              <MappingFragment StoreEntitySet="tbmdfedocument">
+                <ScalarProperty Name="idmdfe" ColumnName="idmdfe" />
+                <ScalarProperty Name="documentData" ColumnName="documentData" />
+                <ScalarProperty Name="documentMDFE" ColumnName="documentMDFE" />
+                <ScalarProperty Name="documentMDFECanc" ColumnName="documentMDFECanc" />
+                <ScalarProperty Name="documentMDFEEncer" ColumnName="documentMDFEEncer" />
+                <ScalarProperty Name="sendingDate" ColumnName="sendingDate" />
+                <ScalarProperty Name="interfaceSendingDate" ColumnName="interfaceSendingDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbmdfeprintrequests">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbmdfeprintrequest">
+              <MappingFragment StoreEntitySet="tbmdfeprintrequest">
+                <ScalarProperty Name="serie" ColumnName="serie" />
+                <ScalarProperty Name="counterid" ColumnName="counterid" />
+                <ScalarProperty Name="numVoo" ColumnName="numVoo" />
+                <ScalarProperty Name="dataVoo" ColumnName="dataVoo" />
+                <ScalarProperty Name="documentData" ColumnName="documentData" />
+                <ScalarProperty Name="processDate" ColumnName="processDate" />
+                <ScalarProperty Name="processHHMM" ColumnName="processHHMM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbmdfeprocesses">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbmdfeprocess">
+              <MappingFragment StoreEntitySet="tbmdfeprocess">
+                <ScalarProperty Name="idmdfe" ColumnName="idmdfe" />
+                <ScalarProperty Name="idActionType" ColumnName="idActionType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbmdfereceptionhistories">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbmdfereceptionhistory">
+              <MappingFragment StoreEntitySet="tbmdfereceptionhistory">
+                <ScalarProperty Name="origemManifesto" ColumnName="origemManifesto" />
+                <ScalarProperty Name="destinoManifesto" ColumnName="destinoManifesto" />
+                <ScalarProperty Name="numVoo" ColumnName="numVoo" />
+                <ScalarProperty Name="dataVoo" ColumnName="dataVoo" />
+                <ScalarProperty Name="documentData" ColumnName="documentData" />
+                <ScalarProperty Name="processDate" ColumnName="processDate" />
+                <ScalarProperty Name="processHHMM" ColumnName="processHHMM" />
+                <ScalarProperty Name="actionTag" ColumnName="actionTag" />
+                <ScalarProperty Name="serie" ColumnName="serie" />
+                <ScalarProperty Name="counterId" ColumnName="counterId" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="statusDate" ColumnName="statusDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbmdfereceptionhistoryBKPs">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbmdfereceptionhistoryBKP">
+              <MappingFragment StoreEntitySet="tbmdfereceptionhistoryBKP">
+                <ScalarProperty Name="origemManifesto" ColumnName="origemManifesto" />
+                <ScalarProperty Name="destinoManifesto" ColumnName="destinoManifesto" />
+                <ScalarProperty Name="numVoo" ColumnName="numVoo" />
+                <ScalarProperty Name="dataVoo" ColumnName="dataVoo" />
+                <ScalarProperty Name="documentData" ColumnName="documentData" />
+                <ScalarProperty Name="processDate" ColumnName="processDate" />
+                <ScalarProperty Name="processHHMM" ColumnName="processHHMM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbmdfeRetornoes">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbmdfeRetorno">
+              <MappingFragment StoreEntitySet="tbmdfeRetorno">
+                <ScalarProperty Name="idmdfe" ColumnName="idmdfe" />
+                <ScalarProperty Name="documentRetMDFE" ColumnName="documentRetMDFE" />
+                <ScalarProperty Name="processDate" ColumnName="processDate" />
+                <ScalarProperty Name="processHHMM" ColumnName="processHHMM" />
+                <ScalarProperty Name="statusMDFe" ColumnName="statusMDFe" />
+                <ScalarProperty Name="xmlRetornoDate" ColumnName="xmlRetornoDate" />
+                <ScalarProperty Name="xmlRetornoHHMM" ColumnName="xmlRetornoHHMM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

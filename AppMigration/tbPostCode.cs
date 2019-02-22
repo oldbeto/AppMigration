@@ -12,11 +12,11 @@ namespace AppMigration
     using System;
     using System.Collections.Generic;
     
-    public partial class tbMunicipio
+    public partial class tbPostCode
     {
+        public string bairro { get; set; }
+        public string logradouro { get; set; }
         public int idMun { get; set; }
-        public decimal cdUF { get; set; }
-        public int cdMun { get; set; }
-        public string descMun { get; set; }
+        public string CEP { get; set; }
     }
 }

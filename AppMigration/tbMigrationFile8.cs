@@ -18,7 +18,5 @@ namespace AppMigration
         public string OND { get; set; }
         public string AWB_ID { get; set; }
         public string ChaveCte { get; set; }
-    
-        public virtual tbMigrationFile1 tbMigrationFile1 { get; set; }
     }
 }

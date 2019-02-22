@@ -13,10 +13,10 @@ namespace AppMigration
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CTEGOLEntities2 : DbContext
+    public partial class CTEGOLEntities : DbContext
     {
-        public CTEGOLEntities2()
-            : base("name=CTEGOLEntities2")
+        public CTEGOLEntities()
+            : base("name=CTEGOLEntities")
         {
         }
     
@@ -31,15 +31,10 @@ namespace AppMigration
         public virtual DbSet<tbCTeEvento> tbCTeEventoes { get; set; }
         public virtual DbSet<tbcteinut> tbcteinuts { get; set; }
         public virtual DbSet<tbcteref> tbcterefs { get; set; }
-        public virtual DbSet<tbDefinition> tbDefinitions { get; set; }
-        public virtual DbSet<tbLog> tbLogs { get; set; }
         public virtual DbSet<tbmdfe> tbmdfes { get; set; }
         public virtual DbSet<tbmdfecancel> tbmdfecancels { get; set; }
         public virtual DbSet<tbMigrationFile1> tbMigrationFile1 { get; set; }
         public virtual DbSet<tbMigrationFile8> tbMigrationFile8 { get; set; }
-        public virtual DbSet<tbMigrationTeste> tbMigrationTestes { get; set; }
-        public virtual DbSet<tbMunicipio> tbMunicipios { get; set; }
-        public virtual DbSet<tbUsuario> tbUsuarios { get; set; }
         public virtual DbSet<tbcteCargaEspecial> tbcteCargaEspecials { get; set; }
         public virtual DbSet<tbcteemail> tbcteemails { get; set; }
         public virtual DbSet<tbCTeEventoDocument> tbCTeEventoDocuments { get; set; }
@@ -50,7 +45,6 @@ namespace AppMigration
         public virtual DbSet<tbctereceptionhistory> tbctereceptionhistories { get; set; }
         public virtual DbSet<tbcteRetorno> tbcteRetornoes { get; set; }
         public virtual DbSet<tbcteRetornoInut> tbcteRetornoInuts { get; set; }
-        public virtual DbSet<tbEstado> tbEstadoes { get; set; }
         public virtual DbSet<tbmdfeColdFile> tbmdfeColdFiles { get; set; }
         public virtual DbSet<tbmdfedamdfe> tbmdfedamdfes { get; set; }
         public virtual DbSet<tbmdfedetalhe> tbmdfedetalhes { get; set; }
@@ -60,5 +54,6 @@ namespace AppMigration
         public virtual DbSet<tbmdfereceptionhistory> tbmdfereceptionhistories { get; set; }
         public virtual DbSet<tbmdfereceptionhistoryBKP> tbmdfereceptionhistoryBKPs { get; set; }
         public virtual DbSet<tbmdfeRetorno> tbmdfeRetornoes { get; set; }
+        public virtual DbSet<tbPostCode> tbPostCodes { get; set; }
     }
 }

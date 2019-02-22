@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="CTEGOLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="CTEGOLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tbcte">
           <Key>
             <PropertyRef Name="idcte" />
@@ -244,75 +244,6 @@ warning 6002: The table/view 'CTEGOL.dbo.tbcteRetornoInut' does not have a prima
           <Property Name="processDate" Type="bigint" />
           <Property Name="processHHMM" Type="bigint" />
         </EntityType>
-        <EntityType Name="tbDefinitions">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="station" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="CNPJ" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="IE" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="fantasyName" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="series" Type="numeric" Precision="3" Scale="0" Nullable="false" />
-          <Property Name="addrName" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="number" Type="numeric" Precision="6" Scale="0" Nullable="false" />
-          <Property Name="complement" Type="varchar" MaxLength="100" />
-          <Property Name="postcode" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="city" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="UF" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="flagEnviaIENaoContrib" Type="varchar" MaxLength="2" Nullable="false" />
-          <Property Name="tpImp" Type="numeric" Precision="3" Scale="0" Nullable="false" />
-          <Property Name="tpAmb" Type="numeric" Precision="3" Scale="0" Nullable="false" />
-          <Property Name="versionCTe" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="versionMDFe" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="procEmiCTe" Type="numeric" Precision="3" Scale="0" Nullable="false" />
-          <Property Name="procEmiMDFe" Type="numeric" Precision="3" Scale="0" Nullable="false" />
-          <Property Name="procVersionCTe" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="procVersionMDFe" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="modalCTe" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="modalMDFe" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="modCTe" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="modMDFe" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="directoryCTe" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="directoryMDFe" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="cancelMessageCTe" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="cancelMessageMDFe" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="inutMessageCTe" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="tpEmitMDFe" Type="numeric" Precision="3" Scale="0" Nullable="false" />
-          <Property Name="cUnidMDFe" Type="varchar" MaxLength="3" Nullable="false" />
-          <Property Name="usuarioCriacao" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="dataCriacao" Type="datetime" Nullable="false" />
-          <Property Name="usuarioAtualizacao" Type="varchar" MaxLength="100" />
-          <Property Name="dataAtualizacao" Type="datetime" />
-          <Property Name="dataVigenciaIni" Type="varchar" MaxLength="20" />
-          <Property Name="dataVigenciaFim" Type="varchar" MaxLength="20" />
-          <Property Name="status" Type="varchar" MaxLength="3" />
-          <Property Name="descComboBox" Type="varchar" MaxLength="200" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'CTEGOL.dbo.tbEstado' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="tbEstado">
-          <Key>
-            <PropertyRef Name="cdUF" />
-            <PropertyRef Name="estado" />
-            <PropertyRef Name="UF" />
-          </Key>
-          <Property Name="cdUF" Type="smallint" Nullable="false" />
-          <Property Name="estado" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="UF" Type="varchar" MaxLength="5" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tbLog">
-          <Key>
-            <PropertyRef Name="idLog" />
-          </Key>
-          <Property Name="idLog" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="tpDoc" Type="varchar" MaxLength="40" Nullable="false" />
-          <Property Name="tpLog" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="processMessage" Type="varchar" MaxLength="400" Nullable="false" />
-          <Property Name="processDate" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="processTime" Type="varchar" MaxLength="10" Nullable="false" />
-        </EntityType>
         <EntityType Name="tbmdfe">
           <Key>
             <PropertyRef Name="idMdfe" />
@@ -528,59 +459,17 @@ warning 6002: The table/view 'CTEGOL.dbo.tbmdfeRetorno' does not have a primary 
           <Property Name="AWB_ID" Type="varchar" MaxLength="80" />
           <Property Name="ChaveCte" Type="varchar" MaxLength="80" />
         </EntityType>
-        <EntityType Name="tbMigrationTeste">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ODN" Type="varchar" MaxLength="80" />
-          <Property Name="AWB_ID" Type="varchar" MaxLength="80" />
-          <Property Name="AirlineCode" Type="varchar" MaxLength="80" />
-          <Property Name="Issuance" Type="varchar" MaxLength="80" />
-          <Property Name="MAWB_Number" Type="varchar" MaxLength="80" />
-          <Property Name="Origin_Station" Type="varchar" MaxLength="80" />
-          <Property Name="Destination_Station" Type="varchar" MaxLength="80" />
-          <Property Name="Payment_Method" Type="varchar" MaxLength="10" />
-          <Property Name="Product_Code" Type="varchar" MaxLength="80" />
-          <Property Name="UTC_Creation" Type="varchar" MaxLength="80" />
-          <Property Name="Local_Creation" Type="varchar" MaxLength="80" />
-          <Property Name="Currency_Code" Type="varchar" MaxLength="80" />
-          <Property Name="Freight_Amount" Type="varchar" MaxLength="80" />
-          <Property Name="Fare_Amount" Type="varchar" MaxLength="80" />
-          <Property Name="Fare_Type" Type="varchar" MaxLength="80" />
-          <Property Name="Declared_Amount" Type="varchar" MaxLength="80" />
-          <Property Name="Insurance_Number" Type="varchar" MaxLength="80" />
-          <Property Name="Insurance" Type="varchar" MaxLength="10" />
-          <Property Name="Observation" Type="varchar" MaxLength="80" />
-          <Property Name="CFOPNumber" Type="varchar" MaxLength="80" />
-          <Property Name="User_Code_Creation" Type="varchar" MaxLength="80" />
-        </EntityType>
-        <EntityType Name="tbMunicipio">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CTEGOL.dbo.tbPostCode' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbPostCode">
           <Key>
             <PropertyRef Name="idMun" />
+            <PropertyRef Name="CEP" />
           </Key>
-          <Property Name="idMun" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="cdUF" Type="numeric" Precision="4" Scale="0" Nullable="false" />
-          <Property Name="cdMun" Type="int" Nullable="false" />
-          <Property Name="descMun" Type="varchar" MaxLength="200" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tbUsuario">
-          <Key>
-            <PropertyRef Name="idUsuario" />
-          </Key>
-          <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="usuario" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="senha" Type="varchar" MaxLength="255" />
-          <Property Name="nomeUsuario" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="email" Type="varchar" MaxLength="100" />
-          <Property Name="dominio" Type="varchar" MaxLength="30" />
-          <Property Name="dtCreate" Type="datetime" Nullable="false" />
-          <Property Name="status" Type="varchar" MaxLength="2" />
-          <Property Name="dtIniVigencia" Type="varchar" MaxLength="8" Nullable="false" />
-          <Property Name="dtfimVigencia" Type="varchar" MaxLength="8" Nullable="false" />
-          <Property Name="dtUpdate" Type="datetime" />
-          <Property Name="userUpdate" Type="varchar" MaxLength="20" />
-          <Property Name="userCreate" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="bairro" Type="varchar" MaxLength="200" />
+          <Property Name="logradouro" Type="varchar" MaxLength="200" />
+          <Property Name="idMun" Type="int" Nullable="false" />
+          <Property Name="CEP" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <Association Name="FK__tbCTeEven__idCTe__5A846E65">
           <End Role="tbCTeEvento" Type="Self.tbCTeEvento" Multiplicity="1" />
@@ -721,15 +610,10 @@ warning 6002: The table/view 'CTEGOL.dbo.tbmdfeRetorno' does not have a primary 
           <EntitySet Name="tbCTeEvento" EntityType="Self.tbCTeEvento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbcteinut" EntityType="Self.tbcteinut" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbcteref" EntityType="Self.tbcteref" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbDefinitions" EntityType="Self.tbDefinitions" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbLog" EntityType="Self.tbLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbmdfe" EntityType="Self.tbmdfe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbmdfecancel" EntityType="Self.tbmdfecancel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbMigrationFile1" EntityType="Self.tbMigrationFile1" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbMigrationFile8" EntityType="Self.tbMigrationFile8" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbMigrationTeste" EntityType="Self.tbMigrationTeste" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbMunicipio" EntityType="Self.tbMunicipio" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbUsuario" EntityType="Self.tbUsuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbcteCargaEspecial" EntityType="Self.tbcteCargaEspecial" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [tbcteCargaEspecial].[cdCargaEspecial] AS [cdCargaEspecial], 
@@ -826,13 +710,6 @@ warning 6002: The table/view 'CTEGOL.dbo.tbmdfeRetorno' does not have a primary 
     [tbcteRetornoInut].[processDate] AS [processDate], 
     [tbcteRetornoInut].[processHHMM] AS [processHHMM]
     FROM [dbo].[tbcteRetornoInut] AS [tbcteRetornoInut]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tbEstado" EntityType="Self.tbEstado" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tbEstado].[cdUF] AS [cdUF], 
-    [tbEstado].[estado] AS [estado], 
-    [tbEstado].[UF] AS [UF]
-    FROM [dbo].[tbEstado] AS [tbEstado]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="tbmdfeColdFiles" EntityType="Self.tbmdfeColdFiles" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -937,6 +814,14 @@ warning 6002: The table/view 'CTEGOL.dbo.tbmdfeRetorno' does not have a primary 
     [tbmdfeRetorno].[xmlRetornoHHMM] AS [xmlRetornoHHMM]
     FROM [dbo].[tbmdfeRetorno] AS [tbmdfeRetorno]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="tbPostCode" EntityType="Self.tbPostCode" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbPostCode].[bairro] AS [bairro], 
+    [tbPostCode].[logradouro] AS [logradouro], 
+    [tbPostCode].[idMun] AS [idMun], 
+    [tbPostCode].[CEP] AS [CEP]
+    FROM [dbo].[tbPostCode] AS [tbPostCode]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__tbCTeEven__idCTe__5A846E65" Association="Self.FK__tbCTeEven__idCTe__5A846E65">
             <End Role="tbCTeEvento" EntitySet="tbCTeEvento" />
             <End Role="tbCTeEventoDocument" EntitySet="tbCTeEventoDocument" />
@@ -982,7 +867,8 @@ warning 6002: The table/view 'CTEGOL.dbo.tbmdfeRetorno' does not have a primary 
             <End Role="tbmdfeRetorno" EntitySet="tbmdfeRetorno" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CTEGOLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1097,63 +983,6 @@ warning 6002: The table/view 'CTEGOL.dbo.tbmdfeRetorno' does not have a primary 
           <Property Name="createDate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="refId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="tbDefinition">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="station" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CNPJ" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="fantasyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="series" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
-          <Property Name="addrName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="number" Type="Decimal" Precision="6" Scale="0" Nullable="false" />
-          <Property Name="complement" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="postcode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UF" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="flagEnviaIENaoContrib" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="tpImp" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
-          <Property Name="tpAmb" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
-          <Property Name="versionCTe" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="versionMDFe" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="procEmiCTe" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
-          <Property Name="procEmiMDFe" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
-          <Property Name="procVersionCTe" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="procVersionMDFe" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="modalCTe" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="modalMDFe" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="modCTe" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="modMDFe" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="directoryCTe" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="directoryMDFe" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cancelMessageCTe" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cancelMessageMDFe" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="inutMessageCTe" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="tpEmitMDFe" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
-          <Property Name="cUnidMDFe" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="usuarioCriacao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="dataCriacao" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="usuarioAtualizacao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="dataAtualizacao" Type="DateTime" Precision="3" />
-          <Property Name="dataVigenciaIni" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="dataVigenciaFim" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="status" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
-          <Property Name="descComboBox" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="tbLog">
-          <Key>
-            <PropertyRef Name="idLog" />
-          </Key>
-          <Property Name="idLog" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="tpDoc" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="tpLog" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="processMessage" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="processDate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="processTime" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
         <EntityType Name="tbmdfe">
           <Key>
             <PropertyRef Name="idMdfe" />
@@ -1211,71 +1040,15 @@ warning 6002: The table/view 'CTEGOL.dbo.tbmdfeRetorno' does not have a primary 
           <Property Name="Observation" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
           <Property Name="CFOPNumber" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
           <Property Name="User_Code_Creation" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbMigrationFile8" Relationship="Self.FK__tbMigrati__AWB_I__05F8DC4F" FromRole="tbMigrationFile1" ToRole="tbMigrationFile8" />
         </EntityType>
         <EntityType Name="tbMigrationFile8">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OND" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
           <Property Name="AWB_ID" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
           <Property Name="ChaveCte" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbMigrationFile1" Relationship="Self.FK__tbMigrati__AWB_I__05F8DC4F" FromRole="tbMigrationFile8" ToRole="tbMigrationFile1" />
-        </EntityType>
-        <EntityType Name="tbMigrationTeste">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ODN" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="AWB_ID" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="AirlineCode" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="Issuance" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="MAWB_Number" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="Origin_Station" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="Destination_Station" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="Payment_Method" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Product_Code" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="UTC_Creation" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="Local_Creation" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="Currency_Code" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="Freight_Amount" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="Fare_Amount" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="Fare_Type" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="Declared_Amount" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="Insurance_Number" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="Insurance" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Observation" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="CFOPNumber" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="User_Code_Creation" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="tbMunicipio">
-          <Key>
-            <PropertyRef Name="idMun" />
-          </Key>
-          <Property Name="idMun" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="cdUF" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
-          <Property Name="cdMun" Type="Int32" Nullable="false" />
-          <Property Name="descMun" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tbUsuario">
-          <Key>
-            <PropertyRef Name="idUsuario" />
-          </Key>
-          <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="usuario" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="senha" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="nomeUsuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="dominio" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="dtCreate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="status" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-          <Property Name="dtIniVigencia" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="dtfimVigencia" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="dtUpdate" Type="DateTime" Precision="3" />
-          <Property Name="userUpdate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="userCreate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="tbcteCargaEspecial">
           <Key>
@@ -1398,16 +1171,6 @@ warning 6002: The table/view 'CTEGOL.dbo.tbmdfeRetorno' does not have a primary 
           <Property Name="processDate" Type="Int64" />
           <Property Name="processHHMM" Type="Int64" />
           <NavigationProperty Name="tbcteinut" Relationship="Self.FK_tbcteRetornoInut_tbcte" FromRole="tbcteRetornoInut" ToRole="tbcteinut" />
-        </EntityType>
-        <EntityType Name="tbEstado">
-          <Key>
-            <PropertyRef Name="cdUF" />
-            <PropertyRef Name="estado" />
-            <PropertyRef Name="UF" />
-          </Key>
-          <Property Name="cdUF" Type="Int16" Nullable="false" />
-          <Property Name="estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UF" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="tbmdfeColdFile">
           <Key>
@@ -1547,6 +1310,16 @@ warning 6002: The table/view 'CTEGOL.dbo.tbmdfeRetorno' does not have a primary 
           <Property Name="xmlRetornoHHMM" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tbmdfe" Relationship="Self.FK_tbmdfeRetorno_tbmdfe" FromRole="tbmdfeRetorno" ToRole="tbmdfe" />
         </EntityType>
+        <EntityType Name="tbPostCode">
+          <Key>
+            <PropertyRef Name="idMun" />
+            <PropertyRef Name="CEP" />
+          </Key>
+          <Property Name="bairro" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="logradouro" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="idMun" Type="Int32" Nullable="false" />
+          <Property Name="CEP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
         <Association Name="FK_tbctedocument_tbcte">
           <End Role="tbcte" Type="Self.tbcte" Multiplicity="1" />
           <End Role="tbctedocument" Type="Self.tbctedocument" Multiplicity="0..1" />
@@ -1679,34 +1452,17 @@ warning 6002: The table/view 'CTEGOL.dbo.tbmdfeRetorno' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbMigrati__AWB_I__05F8DC4F">
-          <End Role="tbMigrationFile1" Type="Self.tbMigrationFile1" Multiplicity="0..1" />
-          <End Role="tbMigrationFile8" Type="Self.tbMigrationFile8" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbMigrationFile1">
-              <PropertyRef Name="AWB_ID" />
-            </Principal>
-            <Dependent Role="tbMigrationFile8">
-              <PropertyRef Name="AWB_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="CTEGOLEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="CTEGOLEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tbctes" EntityType="Self.tbcte" />
           <EntitySet Name="tbctecancels" EntityType="Self.tbctecancel" />
           <EntitySet Name="tbctedocuments" EntityType="Self.tbctedocument" />
           <EntitySet Name="tbCTeEventoes" EntityType="Self.tbCTeEvento" />
           <EntitySet Name="tbcteinuts" EntityType="Self.tbcteinut" />
           <EntitySet Name="tbcterefs" EntityType="Self.tbcteref" />
-          <EntitySet Name="tbDefinitions" EntityType="Self.tbDefinition" />
-          <EntitySet Name="tbLogs" EntityType="Self.tbLog" />
           <EntitySet Name="tbmdfes" EntityType="Self.tbmdfe" />
           <EntitySet Name="tbmdfecancels" EntityType="Self.tbmdfecancel" />
           <EntitySet Name="tbMigrationFile1" EntityType="Self.tbMigrationFile1" />
           <EntitySet Name="tbMigrationFile8" EntityType="Self.tbMigrationFile8" />
-          <EntitySet Name="tbMigrationTestes" EntityType="Self.tbMigrationTeste" />
-          <EntitySet Name="tbMunicipios" EntityType="Self.tbMunicipio" />
-          <EntitySet Name="tbUsuarios" EntityType="Self.tbUsuario" />
           <EntitySet Name="tbcteCargaEspecials" EntityType="Self.tbcteCargaEspecial" />
           <EntitySet Name="tbcteemails" EntityType="Self.tbcteemail" />
           <EntitySet Name="tbCTeEventoDocuments" EntityType="Self.tbCTeEventoDocument" />
@@ -1717,7 +1473,6 @@ warning 6002: The table/view 'CTEGOL.dbo.tbmdfeRetorno' does not have a primary 
           <EntitySet Name="tbctereceptionhistories" EntityType="Self.tbctereceptionhistory" />
           <EntitySet Name="tbcteRetornoes" EntityType="Self.tbcteRetorno" />
           <EntitySet Name="tbcteRetornoInuts" EntityType="Self.tbcteRetornoInut" />
-          <EntitySet Name="tbEstadoes" EntityType="Self.tbEstado" />
           <EntitySet Name="tbmdfeColdFiles" EntityType="Self.tbmdfeColdFile" />
           <EntitySet Name="tbmdfedamdfes" EntityType="Self.tbmdfedamdfe" />
           <EntitySet Name="tbmdfedetalhes" EntityType="Self.tbmdfedetalhe" />
@@ -1727,6 +1482,7 @@ warning 6002: The table/view 'CTEGOL.dbo.tbmdfeRetorno' does not have a primary 
           <EntitySet Name="tbmdfereceptionhistories" EntityType="Self.tbmdfereceptionhistory" />
           <EntitySet Name="tbmdfereceptionhistoryBKPs" EntityType="Self.tbmdfereceptionhistoryBKP" />
           <EntitySet Name="tbmdfeRetornoes" EntityType="Self.tbmdfeRetorno" />
+          <EntitySet Name="tbPostCodes" EntityType="Self.tbPostCode" />
           <AssociationSet Name="FK_tbctedocument_tbcte" Association="Self.FK_tbctedocument_tbcte">
             <End Role="tbcte" EntitySet="tbctes" />
             <End Role="tbctedocument" EntitySet="tbctedocuments" />
@@ -1771,17 +1527,13 @@ warning 6002: The table/view 'CTEGOL.dbo.tbmdfeRetorno' does not have a primary 
             <End Role="tbmdfe" EntitySet="tbmdfes" />
             <End Role="tbmdfeRetorno" EntitySet="tbmdfeRetornoes" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbMigrati__AWB_I__05F8DC4F" Association="Self.FK__tbMigrati__AWB_I__05F8DC4F">
-            <End Role="tbMigrationFile1" EntitySet="tbMigrationFile1" />
-            <End Role="tbMigrationFile8" EntitySet="tbMigrationFile8" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CTEGOLModelStoreContainer" CdmEntityContainer="CTEGOLEntities2">
+        <EntityContainerMapping StorageEntityContainer="CTEGOLModelStoreContainer" CdmEntityContainer="CTEGOLEntities">
           <EntitySetMapping Name="tbctes">
             <EntityTypeMapping TypeName="CTEGOLModel.tbcte">
               <MappingFragment StoreEntitySet="tbcte">
@@ -1891,65 +1643,6 @@ warning 6002: The table/view 'CTEGOL.dbo.tbmdfeRetorno' does not have a primary 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbDefinitions">
-            <EntityTypeMapping TypeName="CTEGOLModel.tbDefinition">
-              <MappingFragment StoreEntitySet="tbDefinitions">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="station" ColumnName="station" />
-                <ScalarProperty Name="CNPJ" ColumnName="CNPJ" />
-                <ScalarProperty Name="IE" ColumnName="IE" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="fantasyName" ColumnName="fantasyName" />
-                <ScalarProperty Name="series" ColumnName="series" />
-                <ScalarProperty Name="addrName" ColumnName="addrName" />
-                <ScalarProperty Name="number" ColumnName="number" />
-                <ScalarProperty Name="complement" ColumnName="complement" />
-                <ScalarProperty Name="postcode" ColumnName="postcode" />
-                <ScalarProperty Name="city" ColumnName="city" />
-                <ScalarProperty Name="UF" ColumnName="UF" />
-                <ScalarProperty Name="flagEnviaIENaoContrib" ColumnName="flagEnviaIENaoContrib" />
-                <ScalarProperty Name="tpImp" ColumnName="tpImp" />
-                <ScalarProperty Name="tpAmb" ColumnName="tpAmb" />
-                <ScalarProperty Name="versionCTe" ColumnName="versionCTe" />
-                <ScalarProperty Name="versionMDFe" ColumnName="versionMDFe" />
-                <ScalarProperty Name="procEmiCTe" ColumnName="procEmiCTe" />
-                <ScalarProperty Name="procEmiMDFe" ColumnName="procEmiMDFe" />
-                <ScalarProperty Name="procVersionCTe" ColumnName="procVersionCTe" />
-                <ScalarProperty Name="procVersionMDFe" ColumnName="procVersionMDFe" />
-                <ScalarProperty Name="modalCTe" ColumnName="modalCTe" />
-                <ScalarProperty Name="modalMDFe" ColumnName="modalMDFe" />
-                <ScalarProperty Name="modCTe" ColumnName="modCTe" />
-                <ScalarProperty Name="modMDFe" ColumnName="modMDFe" />
-                <ScalarProperty Name="directoryCTe" ColumnName="directoryCTe" />
-                <ScalarProperty Name="directoryMDFe" ColumnName="directoryMDFe" />
-                <ScalarProperty Name="cancelMessageCTe" ColumnName="cancelMessageCTe" />
-                <ScalarProperty Name="cancelMessageMDFe" ColumnName="cancelMessageMDFe" />
-                <ScalarProperty Name="inutMessageCTe" ColumnName="inutMessageCTe" />
-                <ScalarProperty Name="tpEmitMDFe" ColumnName="tpEmitMDFe" />
-                <ScalarProperty Name="cUnidMDFe" ColumnName="cUnidMDFe" />
-                <ScalarProperty Name="usuarioCriacao" ColumnName="usuarioCriacao" />
-                <ScalarProperty Name="dataCriacao" ColumnName="dataCriacao" />
-                <ScalarProperty Name="usuarioAtualizacao" ColumnName="usuarioAtualizacao" />
-                <ScalarProperty Name="dataAtualizacao" ColumnName="dataAtualizacao" />
-                <ScalarProperty Name="dataVigenciaIni" ColumnName="dataVigenciaIni" />
-                <ScalarProperty Name="dataVigenciaFim" ColumnName="dataVigenciaFim" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="descComboBox" ColumnName="descComboBox" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbLogs">
-            <EntityTypeMapping TypeName="CTEGOLModel.tbLog">
-              <MappingFragment StoreEntitySet="tbLog">
-                <ScalarProperty Name="idLog" ColumnName="idLog" />
-                <ScalarProperty Name="tpDoc" ColumnName="tpDoc" />
-                <ScalarProperty Name="tpLog" ColumnName="tpLog" />
-                <ScalarProperty Name="processMessage" ColumnName="processMessage" />
-                <ScalarProperty Name="processDate" ColumnName="processDate" />
-                <ScalarProperty Name="processTime" ColumnName="processTime" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbmdfes">
             <EntityTypeMapping TypeName="CTEGOLModel.tbmdfe">
               <MappingFragment StoreEntitySet="tbmdfe">
@@ -2014,63 +1707,6 @@ warning 6002: The table/view 'CTEGOL.dbo.tbmdfeRetorno' does not have a primary 
                 <ScalarProperty Name="OND" ColumnName="OND" />
                 <ScalarProperty Name="AWB_ID" ColumnName="AWB_ID" />
                 <ScalarProperty Name="ChaveCte" ColumnName="ChaveCte" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbMigrationTestes">
-            <EntityTypeMapping TypeName="CTEGOLModel.tbMigrationTeste">
-              <MappingFragment StoreEntitySet="tbMigrationTeste">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ODN" ColumnName="ODN" />
-                <ScalarProperty Name="AWB_ID" ColumnName="AWB_ID" />
-                <ScalarProperty Name="AirlineCode" ColumnName="AirlineCode" />
-                <ScalarProperty Name="Issuance" ColumnName="Issuance" />
-                <ScalarProperty Name="MAWB_Number" ColumnName="MAWB_Number" />
-                <ScalarProperty Name="Origin_Station" ColumnName="Origin_Station" />
-                <ScalarProperty Name="Destination_Station" ColumnName="Destination_Station" />
-                <ScalarProperty Name="Payment_Method" ColumnName="Payment_Method" />
-                <ScalarProperty Name="Product_Code" ColumnName="Product_Code" />
-                <ScalarProperty Name="UTC_Creation" ColumnName="UTC_Creation" />
-                <ScalarProperty Name="Local_Creation" ColumnName="Local_Creation" />
-                <ScalarProperty Name="Currency_Code" ColumnName="Currency_Code" />
-                <ScalarProperty Name="Freight_Amount" ColumnName="Freight_Amount" />
-                <ScalarProperty Name="Fare_Amount" ColumnName="Fare_Amount" />
-                <ScalarProperty Name="Fare_Type" ColumnName="Fare_Type" />
-                <ScalarProperty Name="Declared_Amount" ColumnName="Declared_Amount" />
-                <ScalarProperty Name="Insurance_Number" ColumnName="Insurance_Number" />
-                <ScalarProperty Name="Insurance" ColumnName="Insurance" />
-                <ScalarProperty Name="Observation" ColumnName="Observation" />
-                <ScalarProperty Name="CFOPNumber" ColumnName="CFOPNumber" />
-                <ScalarProperty Name="User_Code_Creation" ColumnName="User_Code_Creation" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbMunicipios">
-            <EntityTypeMapping TypeName="CTEGOLModel.tbMunicipio">
-              <MappingFragment StoreEntitySet="tbMunicipio">
-                <ScalarProperty Name="idMun" ColumnName="idMun" />
-                <ScalarProperty Name="cdUF" ColumnName="cdUF" />
-                <ScalarProperty Name="cdMun" ColumnName="cdMun" />
-                <ScalarProperty Name="descMun" ColumnName="descMun" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbUsuarios">
-            <EntityTypeMapping TypeName="CTEGOLModel.tbUsuario">
-              <MappingFragment StoreEntitySet="tbUsuario">
-                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
-                <ScalarProperty Name="usuario" ColumnName="usuario" />
-                <ScalarProperty Name="senha" ColumnName="senha" />
-                <ScalarProperty Name="nomeUsuario" ColumnName="nomeUsuario" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="dominio" ColumnName="dominio" />
-                <ScalarProperty Name="dtCreate" ColumnName="dtCreate" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="dtIniVigencia" ColumnName="dtIniVigencia" />
-                <ScalarProperty Name="dtfimVigencia" ColumnName="dtfimVigencia" />
-                <ScalarProperty Name="dtUpdate" ColumnName="dtUpdate" />
-                <ScalarProperty Name="userUpdate" ColumnName="userUpdate" />
-                <ScalarProperty Name="userCreate" ColumnName="userCreate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2188,15 +1824,6 @@ warning 6002: The table/view 'CTEGOL.dbo.tbmdfeRetorno' does not have a primary 
                 <ScalarProperty Name="XMLRETORNOHHMM" ColumnName="XMLRETORNOHHMM" />
                 <ScalarProperty Name="processDate" ColumnName="processDate" />
                 <ScalarProperty Name="processHHMM" ColumnName="processHHMM" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbEstadoes">
-            <EntityTypeMapping TypeName="CTEGOLModel.tbEstado">
-              <MappingFragment StoreEntitySet="tbEstado">
-                <ScalarProperty Name="cdUF" ColumnName="cdUF" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="UF" ColumnName="UF" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2318,6 +1945,16 @@ warning 6002: The table/view 'CTEGOL.dbo.tbmdfeRetorno' does not have a primary 
                 <ScalarProperty Name="statusMDFe" ColumnName="statusMDFe" />
                 <ScalarProperty Name="xmlRetornoDate" ColumnName="xmlRetornoDate" />
                 <ScalarProperty Name="xmlRetornoHHMM" ColumnName="xmlRetornoHHMM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbPostCodes">
+            <EntityTypeMapping TypeName="CTEGOLModel.tbPostCode">
+              <MappingFragment StoreEntitySet="tbPostCode">
+                <ScalarProperty Name="bairro" ColumnName="bairro" />
+                <ScalarProperty Name="logradouro" ColumnName="logradouro" />
+                <ScalarProperty Name="idMun" ColumnName="idMun" />
+                <ScalarProperty Name="CEP" ColumnName="CEP" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -4,42 +4,37 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e1dcafe1ee62416bbe859e85a9fb7ef9" Name="Diagram1">
+      <Diagram DiagramId="5045223d81194725be9094f0c64c8a4e" Name="Diagram1">
         <EntityTypeShape EntityType="CTEGOLModel.tbcte" Width="1.5" PointX="10.75" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTEGOLModel.tbctecancel" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTEGOLModel.tbctecancel" Width="1.5" PointX="10.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CTEGOLModel.tbctedocument" Width="1.5" PointX="13" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="CTEGOLModel.tbCTeEvento" Width="1.5" PointX="5.75" PointY="2.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CTEGOLModel.tbcteinut" Width="1.5" PointX="5.75" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTEGOLModel.tbcteref" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTEGOLModel.tbDefinition" Width="1.5" PointX="2.75" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTEGOLModel.tbLog" Width="1.5" PointX="15.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTEGOLModel.tbcteref" Width="1.5" PointX="12.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CTEGOLModel.tbmdfe" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTEGOLModel.tbmdfecancel" Width="1.5" PointX="4.75" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTEGOLModel.tbMigrationFile1" Width="1.5" PointX="10.75" PointY="11.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTEGOLModel.tbMigrationFile8" Width="1.5" PointX="13" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTEGOLModel.tbMigrationTeste" Width="1.5" PointX="15.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTEGOLModel.tbMunicipio" Width="1.5" PointX="6.75" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTEGOLModel.tbUsuario" Width="1.5" PointX="15.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTEGOLModel.tbcteCargaEspecial" Width="1.5" PointX="12.75" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTEGOLModel.tbcteemail" Width="1.5" PointX="17.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTEGOLModel.tbmdfecancel" Width="1.5" PointX="14.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTEGOLModel.tbMigrationFile1" Width="1.5" PointX="14.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTEGOLModel.tbMigrationFile8" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTEGOLModel.tbcteCargaEspecial" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTEGOLModel.tbcteemail" Width="1.5" PointX="2.75" PointY="15.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CTEGOLModel.tbCTeEventoDocument" Width="1.5" PointX="8" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="CTEGOLModel.tbCTeEventoProcess" Width="1.5" PointX="8" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CTEGOLModel.tbCTeEventoRetorno" Width="1.5" PointX="8" PointY="6.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTEGOLModel.tbcteLog" Width="1.5" PointX="17.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTEGOLModel.tbcteLog" Width="1.5" PointX="15.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CTEGOLModel.tbcteprocess" Width="1.5" PointX="13" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTEGOLModel.tbctereceptionhistory" Width="1.5" PointX="17.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTEGOLModel.tbctereceptionhistory" Width="1.5" PointX="4.75" PointY="15.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CTEGOLModel.tbcteRetorno" Width="1.5" PointX="13" PointY="6.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CTEGOLModel.tbcteRetornoInut" Width="1.5" PointX="8" PointY="11.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTEGOLModel.tbEstado" Width="1.5" PointX="8.75" PointY="17.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTEGOLModel.tbmdfeColdFile" Width="1.5" PointX="17.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTEGOLModel.tbmdfedamdfe" Width="1.5" PointX="14.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTEGOLModel.tbmdfeColdFile" Width="1.5" PointX="15.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTEGOLModel.tbmdfedamdfe" Width="1.5" PointX="6.75" PointY="15.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CTEGOLModel.tbmdfedetalhe" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CTEGOLModel.tbmdfedocument" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTEGOLModel.tbmdfeprintrequest" Width="1.5" PointX="17.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTEGOLModel.tbmdfeprintrequest" Width="1.5" PointX="8.75" PointY="15.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CTEGOLModel.tbmdfeprocess" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTEGOLModel.tbmdfereceptionhistory" Width="1.5" PointX="4.75" PointY="18.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTEGOLModel.tbmdfereceptionhistoryBKP" Width="1.5" PointX="10.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTEGOLModel.tbmdfereceptionhistory" Width="1.5" PointX="16.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTEGOLModel.tbmdfereceptionhistoryBKP" Width="1.5" PointX="10.75" PointY="16.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CTEGOLModel.tbmdfeRetorno" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTEGOLModel.tbPostCode" Width="1.5" PointX="16.75" PointY="15.75" IsExpanded="true" />
         <AssociationConnector Association="CTEGOLModel.FK_tbctedocument_tbcte" ManuallyRouted="false" />
         <AssociationConnector Association="CTEGOLModel.FK_tbcteprocess_tbcte" ManuallyRouted="false" />
         <AssociationConnector Association="CTEGOLModel.FK_tbcteRetorno_tbcte" ManuallyRouted="false" />
@@ -51,7 +46,6 @@
         <AssociationConnector Association="CTEGOLModel.FK_tbmdfedocument_tbmdfe" ManuallyRouted="false" />
         <AssociationConnector Association="CTEGOLModel.FK_tbmdfeprocess_tbcte" ManuallyRouted="false" />
         <AssociationConnector Association="CTEGOLModel.FK_tbmdfeRetorno_tbmdfe" ManuallyRouted="false" />
-        <AssociationConnector Association="CTEGOLModel.FK__tbMigrati__AWB_I__05F8DC4F" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

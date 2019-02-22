@@ -14,12 +14,6 @@ namespace AppMigration
     
     public partial class tbMigrationFile1
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tbMigrationFile1()
-        {
-            this.tbMigrationFile8 = new HashSet<tbMigrationFile8>();
-        }
-    
         public string ODN { get; set; }
         public string AWB_ID { get; set; }
         public string AirlineCode { get; set; }
@@ -41,8 +35,5 @@ namespace AppMigration
         public string Observation { get; set; }
         public string CFOPNumber { get; set; }
         public string User_Code_Creation { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbMigrationFile8> tbMigrationFile8 { get; set; }
     }
 }
